@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kevin Thulnith - Full Stack Developer</title>
-    <meta name="description" content="Portfolio of Kevin Thulnith, a Full Stack Developer and IT Undergraduate from Sri Lanka specializing in Python, Django, and React.">
+    <meta name="description" content="Portfolio of Kevin Thulnith, a Full Stack Developer and IT Undergraduate from Sri Lanka specializing in Python, Django, React, Laravel, Docker, and DevOps.">
 
-    <!-- THIS IS THE "STAGE 2" GOOGLE CODE (JSON-LD) -->
-    <!-- It tells Google exactly who you are and lists your projects -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -21,50 +19,413 @@
         "https://www.linkedin.com/in/kevinuluwaduge/",
         "https://facebook.com/kevin.uluwaduge"
       ],
-      "knowsAbout": ["Python", "Django", "React", "DevOps", "Inventory Management Systems"]
+      "knowsAbout": ["Python", "Django", "React", "Laravel", "Docker", "DevOps", "TypeScript", "PHP", "PostgreSQL", "Redis", "Tailwind CSS"]
     }
     </script>
 
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f4f4f4; }
-        h1 { color: #333; }
-        .btn { display: inline-block; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; margin: 10px; }
-        .project-list { margin-top: 30px; }
-        .project { background: white; padding: 20px; margin: 20px auto; max-width: 600px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(135deg, #161b22, #0d1117);
+            border-bottom: 1px solid #21262d;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: #f0f6fc;
+            margin-bottom: 8px;
+        }
+
+        .hero h2 {
+            font-size: 1.2rem;
+            color: #58a6ff;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: #8b949e;
+            margin-bottom: 30px;
+        }
+
+        /* TECH BADGES */
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .badge {
+            background: #21262d;
+            color: #58a6ff;
+            border: 1px solid #30363d;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* SOCIAL LINKS */
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover { opacity: 0.8; }
+        .btn-primary { background: #238636; color: #fff; border: 1px solid #2ea043; }
+        .btn-secondary { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; }
+
+        /* SECTIONS */
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            color: #f0f6fc;
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #21262d;
+        }
+
+        /* PROJECT GRID */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .project-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-3px);
+        }
+
+        .project-card h3 {
+            font-size: 1rem;
+            color: #58a6ff;
+        }
+
+        .project-card p {
+            font-size: 0.85rem;
+            color: #8b949e;
+            flex: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            color: #8b949e;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .project-links a {
+            font-size: 0.8rem;
+            color: #58a6ff;
+            text-decoration: none;
+            border: 1px solid #30363d;
+            padding: 4px 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .project-links a:hover { background: #21262d; }
+
+        /* SKILLS GRID */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .skill-group h4 {
+            font-size: 0.85rem;
+            color: #f0f6fc;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .skill-group ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-group li {
+            font-size: 0.85rem;
+            color: #8b949e;
+            padding: 3px 0;
+        }
+
+        .skill-group li::before { content: "▸ "; color: #58a6ff; }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #21262d;
+            color: #8b949e;
+            font-size: 0.85rem;
+        }
+
+        footer a { color: #58a6ff; text-decoration: none; }
     </style>
 </head>
 <body>
 
-    <h1>Hi, I'm Kevin Thulnith 👋</h1>
-    <h3>Full Stack Developer | Sri Lanka</h3>
-    <p>IT Undergraduate at University of Kelaniya</p>
+    <!-- HERO -->
+    <div class="hero">
+        <h1>Hi, I'm Kevin Thulnith 👋</h1>
+        <h2>Full Stack Developer &amp; DevOps Enthusiast</h2>
+        <p>IT Undergraduate at University of Kelaniya, Sri Lanka</p>
 
-    <br>
-    
-    <!-- LINKS TO YOUR LIVE VERCEL PROJECTS -->
-    <div class="project-list">
-        <h2>🚀 My Live Projects</h2>
-        
-        <div class="project">
-            <h3>Inventory Management System</h3>
-            <p>A full-stack system built with Django & React.</p>
-            <!-- REPLACE THE LINK BELOW with your actual Vercel link -->
-            <a href="https://inventory-system-kevin.vercel.app" class="btn">View Live App</a>
+        <div class="badges">
+            <span class="badge">Python</span>
+            <span class="badge">Django</span>
+            <span class="badge">React</span>
+            <span class="badge">TypeScript</span>
+            <span class="badge">Laravel</span>
+            <span class="badge">Docker</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">Redis</span>
+            <span class="badge">Tailwind CSS</span>
         </div>
 
-        <div class="project">
-            <h3>Your Second Project</h3>
-            <p>Description of your second project.</p>
-            <!-- REPLACE THE LINK BELOW with your actual Vercel link -->
-            <a href="#" class="btn">View Live App</a>
+        <div class="socials">
+            <a href="https://github.com/kevinThulnith" class="btn btn-primary">GitHub Profile</a>
+            <a href="https://www.linkedin.com/in/kevinuluwaduge/" class="btn btn-secondary">LinkedIn</a>
+            <a href="https://facebook.com/kevin.uluwaduge" class="btn btn-secondary">Facebook</a>
         </div>
     </div>
 
-    <br><br>
-    <p>
-        <a href="https://github.com/kevinThulnith">Visit my GitHub Profile</a> | 
-        <a href="https://www.linkedin.com/in/kevinuluwaduge/">LinkedIn</a>
-    </p>
+    <!-- FEATURED PROJECTS -->
+    <section>
+        <h2>🚀 Featured Projects</h2>
+        <div class="project-grid">
+
+            <div class="project-card">
+                <h3>Inventory Management System</h3>
+                <p>Full-stack IMS with Django REST API backend and a Vite + React + Tailwind CSS frontend. Includes JWT authentication and PostgreSQL.</p>
+                <div class="project-tags">
+                    <span class="tag">Django</span>
+                    <span class="tag">React</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">JWT</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://inventory-management-system-et5h.vercel.app" target="_blank">Live App</a>
+                    <a href="https://github.com/kevinThulnith/Inventory-Management-System" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>DevOps Project (Live IMS)</h3>
+                <p>Real-time inventory management system with live reloading via Redis + WebSockets, fully containerised with Docker Compose.</p>
+                <div class="project-tags">
+                    <span class="tag">Django</span>
+                    <span class="tag">Redis</span>
+                    <span class="tag">WebSockets</span>
+                    <span class="tag">Docker</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kevinThulnith/devops-project" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Factory Management System</h3>
+                <p>Seamlessly integrated factory management system built with Django, Vite, React, and Tailwind. Fully optimised for Docker Compose deployment.</p>
+                <div class="project-tags">
+                    <span class="tag">Django</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Tailwind</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kevinThulnith/Factory-Management-System" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Multi-Stage React + Gemini AI</h3>
+                <p>Multi-stage Vite + React + Tailwind project with Docker and SSR, integrated with Google Gemini AI.</p>
+                <div class="project-tags">
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Gemini AI</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kevinThulnith/multi-stage-react-project" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Restaurant Website</h3>
+                <p>Full-stack restaurant website built with HTML, CSS, JavaScript, PHP, and Composer. ⭐ Most starred project.</p>
+                <div class="project-tags">
+                    <span class="tag">PHP</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">CSS</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kevinThulnith/Restaurant-Website" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Google OAuth2 App</h3>
+                <p>Django + Vite + React app seamlessly integrated with Google OAuth2 authentication.</p>
+                <div class="project-tags">
+                    <span class="tag">Django</span>
+                    <span class="tag">React</span>
+                    <span class="tag">OAuth2</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kevinThulnith/google-authentication" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Game Cave</h3>
+                <p>12 game projects from beginner to advanced, all in one Vite + React app styled with Tailwind CSS, with Docker and Nginx integration.</p>
+                <div class="project-tags">
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Nginx</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kevinThulnith/game-cave" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Laravel Full-Stack Projects</h3>
+                <p>Laravel 11 project with Sanctum API and Breeze + Tailwind frontend. Also includes a CRUD app and Sanctum project.</p>
+                <div class="project-tags">
+                    <span class="tag">Laravel</span>
+                    <span class="tag">PHP</span>
+                    <span class="tag">Tailwind</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/kevinThulnith/Laravel-project" target="_blank">GitHub</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section>
+        <h2>🛠️ Skills &amp; Technologies</h2>
+        <div class="skills-grid">
+            <div class="skill-group">
+                <h4>Backend</h4>
+                <ul>
+                    <li>Python / Django</li>
+                    <li>Django REST Framework</li>
+                    <li>Laravel / PHP</li>
+                    <li>JWT &amp; OAuth2</li>
+                </ul>
+            </div>
+            <div class="skill-group">
+                <h4>Frontend</h4>
+                <ul>
+                    <li>React / Vite</li>
+                    <li>TypeScript</li>
+                    <li>Tailwind CSS</li>
+                    <li>HTML / CSS / JS</li>
+                </ul>
+            </div>
+            <div class="skill-group">
+                <h4>DevOps &amp; Infra</h4>
+                <ul>
+                    <li>Docker / Docker Compose</li>
+                    <li>Nginx</li>
+                    <li>Redis / WebSockets</li>
+                    <li>SSR</li>
+                </ul>
+            </div>
+            <div class="skill-group">
+                <h4>Databases</h4>
+                <ul>
+                    <li>PostgreSQL</li>
+                    <li>MySQL</li>
+                    <li>Redis</li>
+                </ul>
+            </div>
+            <div class="skill-group">
+                <h4>Languages</h4>
+                <ul>
+                    <li>Python</li>
+                    <li>JavaScript / TypeScript</li>
+                    <li>PHP</li>
+                    <li>C / C++</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            <a href="https://github.com/kevinThulnith">GitHub</a> &nbsp;&middot;&nbsp;
+            <a href="https://www.linkedin.com/in/kevinuluwaduge/">LinkedIn</a> &nbsp;&middot;&nbsp;
+            University of Kelaniya, Sri Lanka
+        </p>
+        <p style="margin-top: 8px;">© 2026 Kevin Thulnith</p>
+    </footer>
 
 </body>
 </html>
