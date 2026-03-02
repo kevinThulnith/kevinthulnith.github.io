@@ -1,0 +1,325 @@
+[
+  {
+    "name": "Factory-Management-System",
+    "link": "https://github.com/kevinThulnith/Factory-Management-System",
+    "description": "Seamlessly integrated factory management system developed with Django | Vite | React | Tailwind, fully optimized to deploy with docker-compose.",
+    "languages": ["Python", "JavaScript"],
+    "frameworks": ["Django", "Django REST Framework", "Django Channels", "React", "Vite", "Tailwind CSS", "Prisma"],
+    "tools_and_infra": ["Docker", "Docker Compose", "Nginx", "Redis", "PostgreSQL", "JWT Authentication", "Google OAuth2", "WebSocket"],
+    "deployment_link": null,
+    "suggested_features": [
+      "Real-time production analytics dashboard with charts",
+      "Employee attendance and shift management",
+      "Inventory stock tracking with low-stock alerts",
+      "Mobile-responsive PWA support",
+      "Export reports to PDF/Excel",
+      "CI/CD pipeline with GitHub Actions"
+    ]
+  },
+  {
+    "name": "Inventory-Management-System",
+    "link": "https://github.com/kevinThulnith/Inventory-Management-System",
+    "description": "Inventory Management System developed with Django | Django REST API for backend and Vite | React | Tailwind CSS for frontend.",
+    "languages": ["Python", "JavaScript"],
+    "frameworks": ["Django", "Django REST Framework", "React", "Vite", "Tailwind CSS", "Axios"],
+    "tools_and_infra": ["PostgreSQL", "JWT Authentication", "uv"],
+    "deployment_link": "https://inventory-management-system-et5h.vercel.app",
+    "suggested_features": [
+      "Live WebSocket stock updates (like devops-project)",
+      "Barcode scanning for product lookup",
+      "Supplier management module",
+      "Purchase order generation",
+      "Analytics & reporting dashboard",
+      "Role-based access (Admin, Manager, Staff)"
+    ]
+  },
+  {
+    "name": "devops-project",
+    "link": "https://github.com/kevinThulnith/devops-project",
+    "description": "Live reloading IMS (Inventory Management System) with Redis and WebSockets + fully optimized to deploy with docker-compose.",
+    "languages": ["Python", "JavaScript"],
+    "frameworks": ["Django", "Django REST Framework", "Django Channels", "React", "Vite", "Tailwind CSS"],
+    "tools_and_infra": ["Docker", "Docker Compose", "Nginx", "Redis", "PostgreSQL", "JWT Authentication", "WebSocket", "uv"],
+    "deployment_link": null,
+    "suggested_features": [
+      "Kubernetes (K8s) deployment manifests",
+      "GitHub Actions CI/CD pipeline",
+      "Monitoring with Prometheus + Grafana",
+      "Centralized logging with ELK stack",
+      "Multi-environment config (dev/staging/prod)",
+      "Automated backup for PostgreSQL"
+    ]
+  },
+  {
+    "name": "game-cave",
+    "link": "https://github.com/kevinThulnith/game-cave",
+    "description": "12 game projects from advanced to beginner in one Vite | React project styled with Tailwind CSS + Docker and Nginx integration.",
+    "languages": ["TypeScript", "JavaScript"],
+    "frameworks": ["React", "Vite", "Tailwind CSS"],
+    "tools_and_infra": ["Docker", "Nginx", "Node.js", "Vercel", "Server-Side Rendering (SSR)"],
+    "deployment_link": "https://game-cave-mu.vercel.app",
+    "suggested_features": [
+      "User accounts with game high-score leaderboard",
+      "AI-powered opponents using Gemini API",
+      "Multiplayer support via WebSocket",
+      "Dark/light theme toggle",
+      "PWA support for offline gameplay",
+      "Add more games (Chess, Snake, Wordle)"
+    ]
+  },
+  {
+    "name": "multi-stage-react-project",
+    "link": "https://github.com/kevinThulnith/multi-stage-react-project",
+    "description": "Multi-stage Vite | React | Tailwind project with Docker and SSR (Server-Side Rendering) integrated with Gemini AI by Google.",
+    "languages": ["TypeScript", "JavaScript"],
+    "frameworks": ["React", "Vite", "Tailwind CSS"],
+    "tools_and_infra": ["Docker", "Nginx", "Node.js", "Vercel", "Google Gemini AI", "SSR"],
+    "deployment_link": "https://multi-stage-react-project.vercel.app",
+    "suggested_features": [
+      "Persistent AI conversation history",
+      "User authentication with profiles",
+      "Dynamic theme customization",
+      "PWA with offline support",
+      "Multiple Gemini model selection",
+      "Share/export AI responses"
+    ]
+  },
+  {
+    "name": "google-authentication",
+    "link": "https://github.com/kevinThulnith/google-authentication",
+    "description": "Django | Vite | React app integrated seamlessly with Google OAuth2 authentication.",
+    "languages": ["Python", "JavaScript"],
+    "frameworks": ["Django", "Django REST Framework", "React", "Vite", "Tailwind CSS", "Framer Motion", "Axios"],
+    "tools_and_infra": ["Google OAuth2", "JWT Authentication", "SQLite", "uv", "dj-rest-auth", "django-allauth"],
+    "deployment_link": null,
+    "suggested_features": [
+      "GitHub and Facebook OAuth providers",
+      "Two-factor authentication (2FA)",
+      "User profile page with avatar",
+      "Session management dashboard",
+      "Email/password fallback login",
+      "Docker deployment support"
+    ]
+  },
+  {
+    "name": "Reservation-System",
+    "link": "https://github.com/kevinThulnith/Reservation-System",
+    "description": "OceanView Reservation System — a backend API for managing reservations.",
+    "languages": ["Java"],
+    "frameworks": ["Spring Boot", "Spring Security", "Spring Data JPA", "Thymeleaf"],
+    "tools_and_infra": ["PostgreSQL", "JWT (jjwt)", "Lombok", "Maven", "Spring Boot Actuator"],
+    "deployment_link": null,
+    "suggested_features": [
+      "React or Angular frontend",
+      "Real-time table availability updates",
+      "Email/SMS confirmation notifications",
+      "Admin dashboard with calendar view",
+      "Payment gateway integration",
+      "Docker containerization"
+    ]
+  },
+  {
+    "name": "book-shop",
+    "link": "https://github.com/kevinThulnith/book-shop",
+    "description": "A book shop web application built with Spring Boot, Thymeleaf, and SQLite/MySQL.",
+    "languages": ["Java", "HTML"],
+    "frameworks": ["Spring Boot", "Spring Security", "Spring Data JPA", "Thymeleaf"],
+    "tools_and_infra": ["SQLite", "MySQL", "Maven", "Spring Boot DevTools"],
+    "deployment_link": null,
+    "suggested_features": [
+      "Search and filter books by genre/author/price",
+      "Shopping cart and order management",
+      "User reviews and ratings",
+      "Wishlist feature",
+      "Admin dashboard for book inventory",
+      "REST API for a mobile app companion"
+    ]
+  },
+  {
+    "name": "Restaurant-Website",
+    "link": "https://github.com/kevinThulnith/Restaurant-Website",
+    "description": "A fully functional, feature-rich restaurant web application supporting customer ordering, table reservations, and admin/employee management — Gallery Café.",
+    "languages": ["PHP", "JavaScript", "HTML5", "CSS3"],
+    "frameworks": ["PHPMailer (Composer)"],
+    "tools_and_infra": ["MySQL", "CSRF Protection", "Session Management", "SSL/HTTPS"],
+    "deployment_link": "http://galleryCafe.infinityfreeapp.com",
+    "suggested_features": [
+      "Online payment gateway (Stripe/PayPal)",
+      "SMS/email order status notifications",
+      "Customer loyalty/rewards system",
+      "QR code contactless menu",
+      "Real-time order tracking",
+      "Mobile app companion (React Native)"
+    ]
+  },
+  {
+    "name": "django-vite-react-tailwind-project",
+    "link": "https://github.com/kevinThulnith/django-vite-react-tailwind-project",
+    "description": "A full-stack product management web application with JWT authentication and authorization, built with Django REST Framework and React.",
+    "languages": ["Python", "JavaScript"],
+    "frameworks": ["Django", "Django REST Framework", "React", "Vite", "Tailwind CSS", "Axios"],
+    "tools_and_infra": ["JWT (Simple JWT)", "SQLite", "PostgreSQL", "Node.js"],
+    "deployment_link": null,
+    "suggested_features": [
+      "Pagination and advanced filtering",
+      "Image upload for products",
+      "Category and tag management",
+      "Dark mode toggle",
+      "Admin analytics dashboard",
+      "Docker deployment support"
+    ]
+  },
+  {
+    "name": "group-project",
+    "link": "https://github.com/kevinThulnith/group-project",
+    "description": "A collaborative group project (private) built with Django backend and React frontend.",
+    "languages": ["JavaScript", "Python"],
+    "frameworks": ["Django", "React", "Vite"],
+    "tools_and_infra": ["Node.js", "npm"],
+    "deployment_link": null,
+    "visibility": "private",
+    "suggested_features": [
+      "CI/CD pipeline for team workflows",
+      "Code review guidelines and PR templates",
+      "Integration tests and coverage reports",
+      "Docker for consistent dev environments",
+      "Project wiki/documentation site"
+    ]
+  },
+  {
+    "name": "POS-System",
+    "link": "https://github.com/kevinThulnith/POS-System",
+    "description": "A Point of Sale system (private repository) built with Django and ASGI server.",
+    "languages": ["Python"],
+    "frameworks": ["Django"],
+    "tools_and_infra": ["uv", "Daphne (ASGI server)"],
+    "deployment_link": null,
+    "visibility": "private",
+    "suggested_features": [
+      "Barcode/QR code scanning",
+      "Real-time sales dashboard",
+      "Customer loyalty points",
+      "Receipt printing integration",
+      "Low-stock inventory alerts",
+      "Sales report export (PDF/CSV)"
+    ]
+  },
+  {
+    "name": "model-based-app",
+    "link": "https://github.com/kevinThulnith/model-based-app",
+    "description": "An application developed based on ML/AI models using health data.",
+    "languages": ["Python"],
+    "frameworks": [],
+    "tools_and_infra": [],
+    "deployment_link": null,
+    "suggested_features": [
+      "Interactive data visualization (Plotly/Matplotlib)",
+      "Model accuracy comparison dashboard",
+      "REST API to expose predictions",
+      "Custom dataset upload for analysis",
+      "Explainability features (SHAP/LIME)",
+      "Export predictions as PDF report"
+    ]
+  },
+  {
+    "name": "Laravel-crud-app",
+    "link": "https://github.com/kevinThulnith/Laravel-crud-app",
+    "description": "A simple CRUD application built with Laravel Breeze for authentication, allowing users to manage products with email verification.",
+    "languages": ["PHP"],
+    "frameworks": ["Laravel", "Laravel Breeze", "Tailwind CSS", "AlpineJS", "Vite"],
+    "tools_and_infra": ["MySQL", "SQLite", "Composer", "Node.js"],
+    "deployment_link": null,
+    "suggested_features": [
+      "Product image upload with storage",
+      "Soft deletes with restore functionality",
+      "CSV import/export of products",
+      "Search and filter with pagination",
+      "Multi-role user management (Admin/User)",
+      "REST API for mobile consumption"
+    ]
+  },
+  {
+    "name": "php-crud-api",
+    "link": "https://github.com/kevinThulnith/php-crud-api",
+    "description": "A simple RESTful CRUD API built with PHP and MySQL, serving as a starter template for developers.",
+    "languages": ["PHP"],
+    "frameworks": [],
+    "tools_and_infra": ["MySQL", "Composer", "Postman"],
+    "deployment_link": null,
+    "suggested_features": [
+      "JWT-based authentication",
+      "Input validation middleware",
+      "Rate limiting",
+      "Swagger/OpenAPI documentation",
+      "Pagination and sorting",
+      "Docker containerization"
+    ]
+  },
+  {
+    "name": "kevinthulnith.github.io",
+    "link": "https://github.com/kevinThulnith/kevinthulnith.github.io",
+    "description": "Personal GitHub Pages portfolio/website.",
+    "languages": ["HTML"],
+    "frameworks": [],
+    "tools_and_infra": ["GitHub Pages"],
+    "deployment_link": "https://kevinthulnith.github.io",
+    "suggested_features": [
+      "Add React or Astro for dynamic components",
+      "Dark/light mode toggle",
+      "Animated project showcase section",
+      "Contact form with EmailJS",
+      "Blog/articles section",
+      "GitHub stats and activity widget"
+    ]
+  },
+  {
+    "name": "Tic-Tack-Toe",
+    "link": "https://github.com/kevinThulnith/Tic-Tack-Toe",
+    "description": "A classic Tic Tac Toe game with a responsive UI and a computer AI opponent, built with HTML, CSS, and JavaScript.",
+    "languages": ["HTML", "CSS", "JavaScript"],
+    "frameworks": [],
+    "tools_and_infra": [],
+    "deployment_link": null,
+    "suggested_features": [
+      "Two-player local multiplayer mode",
+      "AI difficulty levels (Easy/Medium/Hard via Minimax)",
+      "Score tracking across sessions",
+      "Animated win/draw celebration",
+      "Online multiplayer with WebSocket"
+    ]
+  },
+  {
+    "name": "Rock-Paper-Scissor",
+    "link": "https://github.com/kevinThulnith/Rock-Paper-Scissor",
+    "description": "A classic Rock-Paper-Scissors game with visual feedback and score tracking, built using HTML, CSS, and JavaScript.",
+    "languages": ["HTML", "CSS", "JavaScript"],
+    "frameworks": [],
+    "tools_and_infra": [],
+    "deployment_link": null,
+    "suggested_features": [
+      "Best-of-N rounds mode",
+      "Animated hand gesture reveals",
+      "Leaderboard with localStorage persistence",
+      "Sound effects",
+      "Online multiplayer mode",
+      "Extended mode (Rock-Paper-Scissors-Lizard-Spock)"
+    ]
+  },
+  {
+    "name": "Calculator",
+    "link": "https://github.com/kevinThulnith/Calculator",
+    "description": "A basic calculator performing arithmetic operations, built with HTML, CSS, and JavaScript.",
+    "languages": ["HTML", "CSS", "JavaScript"],
+    "frameworks": [],
+    "tools_and_infra": [],
+    "deployment_link": null,
+    "suggested_features": [
+      "Scientific calculator mode",
+      "Calculation history panel",
+      "Keyboard input support",
+      "Dark/light theme toggle",
+      "Copy result to clipboard",
+      "Unit converter integration"
+    ]
+  }
+]

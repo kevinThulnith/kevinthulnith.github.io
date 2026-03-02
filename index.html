@@ -1,667 +1,2653 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kevin Thulnith | Full Stack Developer</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&amp;family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<style type="text/tailwindcss">
-        :root {
-            --bg-dark: #121212;
-            --bg-card: #1E1E1E;
-            --bg-terminal: #252526;
-            --accent: #CCFF00;
-            --text-main: #E0E0E0;
-            --text-muted: #858585;
-            --border-dim: #333333;
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kevin Thulnith | Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&amp;family=Inter:wght@300;400;600;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/tailwindcss">
+      :root {
+        --bg-dark: #121212;
+        --bg-card: #1e1e1e;
+        --bg-terminal: #252526;
+        --accent: #ccff00;
+        --text-main: #e0e0e0;
+        --text-muted: #858585;
+        --border-dim: #333333;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+      }
+      .font-mono {
+        font-family: "JetBrains Mono", monospace;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-dark);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #444;
+      }
+      .folder-tab {
+        clip-path: polygon(0 0, 40% 0, 50% 100%, 0% 100%);
+      }
+      .orbit-container {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .orbit-ring {
+        border: 1px dashed var(--border-dim);
+        border-radius: 50%;
+        position: absolute;
+      }
+      .skill-dot {
+        position: absolute;
+        background-color: var(--bg-card);
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        padding: 4px 12px;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-family: "JetBrains Mono", monospace;
+        white-space: nowrap;
+        z-index: 10;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .skill-dot:hover {
+        background-color: var(--accent);
+        color: black;
+        transform: scale(1.1);
+      }
+      .skill-tooltip {
+        position: absolute;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: black;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+        border: 1px solid var(--accent);
+      }
+      .skill-dot:hover .skill-tooltip {
+        opacity: 1;
+      }
+      .cursor-block {
+        display: inline-block;
+        width: 10px;
+        height: 1.2em;
+        background-color: var(--accent);
+        vertical-align: middle;
+        margin-left: 2px;
+        animation: blink 1s step-end infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
         }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+        50% {
+          opacity: 0;
         }
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
+      }
+      .bg-grid {
+        background-size: 40px 40px;
+        background-image:
+          linear-gradient(to right, #2a2a2a 1px, transparent 1px),
+          linear-gradient(to bottom, #2a2a2a 1px, transparent 1px);
+      }
+      .pulsing-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #22c55e;
+        border-radius: 50%;
+        position: relative;
+      }
+      .pulsing-dot::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #22c55e;
+        animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      }
+      @keyframes pulse-ring {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.8;
         }
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+        100% {
+          transform: translate(-50%, -50%) scale(3);
+          opacity: 0;
         }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
+      }
+      .connector-line {
+        position: absolute;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border-dim),
+          transparent
+        );
+        transform-origin: 0 50%;
+        opacity: 0.5;
+        z-index: 1;
+      }
+      .timeline-line {
+        position: absolute;
+        left: 19px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-image: linear-gradient(
+          to bottom,
+          var(--border-dim) 50%,
+          transparent 50%
+        );
+        background-size: 2px 10px;
+      }
+      /* === Interactive Orbit === */
+      .orbit-ring-visual {
+        border: 1px dashed #888;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition:
+          border-color 0.5s ease,
+          box-shadow 0.5s ease;
+        pointer-events: none;
+      }
+      .orbit-ring-visual.ring-1 {
+        width: 220px;
+        height: 220px;
+        opacity: 0.8;
+      }
+      .orbit-ring-visual.ring-2 {
+        width: 380px;
+        height: 380px;
+        opacity: 0.65;
+      }
+      .orbit-ring-visual.ring-3 {
+        width: 540px;
+        height: 540px;
+        opacity: 0.5;
+      }
+      .orbit-ring-visual.active {
+        border-color: var(--accent);
+        box-shadow: 0 0 20px rgba(204, 255, 0, 0.08);
+        opacity: 0.7 !important;
+      }
+      .orbit-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+        background: var(--bg-dark);
+        border: 2px solid var(--accent);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 20px rgba(204, 255, 0, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .orbit-center:hover {
+        box-shadow: 0 0 40px rgba(204, 255, 0, 0.4);
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+      .skill-orb {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: var(--bg-card);
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        padding: 5px 14px;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-family: "JetBrains Mono", monospace;
+        white-space: nowrap;
+        z-index: 10;
+        cursor: pointer;
+        transition:
+          background-color 0.3s,
+          color 0.3s,
+          box-shadow 0.3s,
+          opacity 0.3s,
+          border-color 0.3s;
+        user-select: none;
+        will-change: transform;
+      }
+      .skill-orb.ring-2 {
+        border-color: #555;
+        color: #ccc;
+      }
+      .skill-orb.ring-3 {
+        border-color: #444;
+        color: #888;
+        font-size: 0.7rem;
+      }
+      .skill-orb.ring-4 {
+        border-color: #777;
+        color: #bbb;
+        font-size: 0.65rem;
+        padding: 4px 10px;
+      }
+      .skill-orb:hover {
+        background-color: var(--accent);
+        color: black;
+        box-shadow: 0 0 20px rgba(204, 255, 0, 0.5);
+        z-index: 25;
+      }
+      .skill-orb.highlighted {
+        background-color: var(--accent) !important;
+        color: black !important;
+        border-color: var(--accent) !important;
+        box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
+      }
+      .skill-orb.dimmed {
+        opacity: 0.15;
+        border-color: var(--border-dim) !important;
+        color: var(--text-muted) !important;
+      }
+      .skill-orb.active-skill {
+        background-color: var(--accent) !important;
+        color: black !important;
+        box-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
+        z-index: 25;
+      }
+      .skill-detail-panel {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        background: var(--bg-dark);
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        padding: 16px 20px;
+        z-index: 30;
+        min-width: 260px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 30px rgba(204, 255, 0, 0.15);
+      }
+      .skill-detail-panel.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+      }
+      .detail-level-bar {
+        height: 4px;
+        background: var(--border-dim);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .detail-level-fill {
+        height: 100%;
+        background: var(--accent);
+        border-radius: 2px;
+        transition: width 0.8s ease;
+      }
+      /* === Category Cards === */
+      .category-card {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .category-card:hover {
+        border-left-color: var(--accent) !important;
+      }
+      .category-card.active {
+        border-left-color: var(--accent) !important;
+        border-left-width: 3px;
+        background-color: rgba(204, 255, 0, 0.03);
+      }
+      .category-card.active h4 {
+        color: var(--accent) !important;
+      }
+      .category-skills-list {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      .category-card.active .category-skills-list {
+        max-height: 400px;
+      }
+      .cat-arrow {
+        transition: transform 0.3s ease;
+        font-size: 18px;
+      }
+      .category-card.active .cat-arrow {
+        transform: rotate(180deg);
+      }
+      .prof-bar {
+        height: 3px;
+        background: var(--border-dim);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .prof-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), #9acc00);
+        border-radius: 2px;
+        width: 0;
+        transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      /* === Scroll Reveal === */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+      /* === Orbit ring rotation === */
+      .orbit-ring-visual.ring-1 {
+        width: 200px;
+        height: 200px;
+        opacity: 0.8;
+        animation: ring-spin-1 60s linear infinite;
+      }
+      .orbit-ring-visual.ring-2 {
+        width: 350px;
+        height: 350px;
+        opacity: 0.65;
+        animation: ring-spin-2 90s linear infinite reverse;
+      }
+      .orbit-ring-visual.ring-3 {
+        width: 500px;
+        height: 500px;
+        opacity: 0.5;
+        animation: ring-spin-3 120s linear infinite;
+      }
+      .orbit-ring-visual.ring-4 {
+        width: 640px;
+        height: 640px;
+        opacity: 0.4;
+        animation: ring-spin-4 150s linear infinite reverse;
+      }
+      @keyframes ring-spin-1 {
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
         }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
+      }
+      @keyframes ring-spin-2 {
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #444;
+      }
+      @keyframes ring-spin-3 {
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
         }
-        .folder-tab {
-            clip-path: polygon(0 0, 40% 0, 50% 100%, 0% 100%);
+      }
+      @keyframes ring-spin-4 {
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
         }
-        .orbit-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+      }
+      /* === Connector SVG lines === */
+      .orbit-connectors {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 5;
+      }
+      .orbit-connectors line {
+        stroke: var(--accent);
+        stroke-width: 0.5;
+        stroke-dasharray: 4 6;
+        opacity: 0.12;
+        transition: opacity 0.5s ease;
+      }
+      .orbit-connectors line.active-line {
+        opacity: 0.4;
+        stroke-width: 1;
+      }
+      /* === Stat counter animation === */
+      .stat-number {
+        display: inline-block;
+      }
+      /* === Mini project enhanced hover === */
+      .mini-card {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .mini-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(204, 255, 0, 0.03),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+      .mini-card:hover::before {
+        left: 100%;
+      }
+      .mini-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+      /* === Live badge pulse === */
+      .live-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.6rem;
+        font-family: "JetBrains Mono", monospace;
+        color: #22c55e;
+        border: 1px solid #22c55e;
+        padding: 1px 6px;
+        border-radius: 9999px;
+      }
+      .live-badge::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        background: #22c55e;
+        border-radius: 50%;
+        animation: pulse-ring 2s ease infinite;
+        margin-top: 4px;
+        margin-left: 2px;
+        margin-right: -2px;
+      }
+      /* === Project card enhanced === */
+      .project-card {
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      }
+      /* === Burger Menu === */
+      .burger-btn {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 60;
+        background: none;
+        border: none;
+      }
+      .burger-btn span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--text-main);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+      .burger-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .burger-btn.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .burger-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-dark);
+        z-index: 45;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .mobile-menu.open {
+        display: flex;
+        opacity: 1;
+      }
+      .mobile-menu a {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        transition: color 0.2s;
+      }
+      .mobile-menu a:hover {
+        color: var(--accent);
+      }
+      /* === Responsive === */
+      @media (max-width: 768px) {
+        .burger-btn {
+          display: flex;
         }
-        .orbit-ring {
-            border: 1px dashed var(--border-dim);
-            border-radius: 50%;
-            position: absolute;
+        .nav-links {
+          display: none !important;
         }
-        .skill-dot {
-            position: absolute;
-            background-color: var(--bg-card);
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 4px 12px;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-family: 'JetBrains Mono', monospace;
-            white-space: nowrap;
-            z-index: 10;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        /* Orbit scaling */
+        .orbit-ring-visual.ring-1 {
+          width: 120px !important;
+          height: 120px !important;
         }
-        .skill-dot:hover {
-            background-color: var(--accent);
-            color: black;
-            transform: scale(1.1);
+        .orbit-ring-visual.ring-2 {
+          width: 210px !important;
+          height: 210px !important;
         }
-        .skill-tooltip {
-            position: absolute;
-            bottom: 120%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: black;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s;
-            border: 1px solid var(--accent);
+        .orbit-ring-visual.ring-3 {
+          width: 300px !important;
+          height: 300px !important;
         }
-        .skill-dot:hover .skill-tooltip {
-            opacity: 1;
+        .orbit-ring-visual.ring-4 {
+          width: 380px !important;
+          height: 380px !important;
         }
-        .cursor-block {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background-color: var(--accent);
-            vertical-align: middle;
-            margin-left: 2px;
-            animation: blink 1s step-end infinite;
+        .orbit-center {
+          width: 56px;
+          height: 56px;
         }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .orbit-center .material-symbols-outlined {
+          font-size: 1.2rem;
         }
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, #2a2a2a 1px, transparent 1px),
-                              linear-gradient(to bottom, #2a2a2a 1px, transparent 1px);
+        .orbit-center span:last-child {
+          font-size: 7px;
         }
-        .pulsing-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #22c55e;
-            border-radius: 50%;
-            position: relative;
+        .skill-orb {
+          font-size: 0.6rem !important;
+          padding: 3px 8px !important;
         }
-        .pulsing-dot::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: #22c55e;
-            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        .skill-detail-panel {
+          min-width: 200px;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 10px;
         }
-        @keyframes pulse-ring {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-            100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+        #orbitViz {
+          min-height: 400px;
+          padding: 1rem;
         }
-        .connector-line {
-            position: absolute;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-dim), transparent);
-            transform-origin: 0 50%;
-            opacity: 0.5;
-            z-index: 1;
+        /* Section headings */
+        section h2 {
+          font-size: 1.5rem !important;
         }
-        .timeline-line {
-            position: absolute;
-            left: 19px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-image: linear-gradient(to bottom, var(--border-dim) 50%, transparent 50%);
-            background-size: 2px 10px;
+        section .text-xl {
+          font-size: 1rem;
         }
+        /* Project cards */
+        .flex.overflow-x-auto article {
+          min-width: 300px !important;
+        }
+        /* Category sidebar */
+        .category-skills-list .text-xs {
+          font-size: 0.7rem;
+        }
+        /* Spacing */
+        main {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        main > section {
+          margin-bottom: 3rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .orbit-ring-visual.ring-1 {
+          width: 100px !important;
+          height: 100px !important;
+        }
+        .orbit-ring-visual.ring-2 {
+          width: 170px !important;
+          height: 170px !important;
+        }
+        .orbit-ring-visual.ring-3 {
+          width: 240px !important;
+          height: 240px !important;
+        }
+        .orbit-ring-visual.ring-4 {
+          width: 310px !important;
+          height: 310px !important;
+        }
+        .orbit-center {
+          width: 46px;
+          height: 46px;
+        }
+        .skill-orb {
+          font-size: 0.55rem !important;
+          padding: 2px 6px !important;
+        }
+        #orbitViz {
+          min-height: 320px;
+          padding: 0.5rem;
+        }
+        /* Headings smaller */
+        section h2 {
+          font-size: 1.25rem !important;
+        }
+        /* Project cards smaller */
+        .flex.overflow-x-auto article {
+          min-width: 260px !important;
+        }
+        /* Stats */
+        .stat-number {
+          font-size: 1.5rem;
+        }
+        /* Contact padding */
+        #contact > div {
+          padding: 1.5rem !important;
+        }
+      }
     </style>
-</head>
-<body class="antialiased min-h-screen flex flex-col relative overflow-x-hidden">
-<div class="fixed inset-0 pointer-events-none bg-grid opacity-20 z-0"></div>
-<nav class="sticky top-0 z-50 bg-[var(--bg-dark)]/90 backdrop-blur-md border-b border-[var(--border-dim)]">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[var(--accent)]">terminal</span>
-<span class="font-mono font-bold tracking-tight text-lg">~/kevin_thulnith</span>
-</div>
-<div class="flex items-center gap-6 text-sm font-mono text-[var(--text-muted)]">
-<a class="hover:text-[var(--accent)] transition-colors" href="#about">_about</a>
-<a class="hover:text-[var(--accent)] transition-colors" href="#projects">_projects</a>
-<a class="hover:text-[var(--accent)] transition-colors" href="#skills">_stack</a>
-<a class="px-4 py-2 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-colors rounded-sm" href="#contact">
-                    contact()
+  </head>
+  <body
+    class="antialiased min-h-screen flex flex-col relative overflow-x-hidden"
+  >
+    <div class="fixed inset-0 pointer-events-none bg-grid opacity-20 z-0"></div>
+    <nav
+      class="sticky top-0 z-50 bg-[var(--bg-dark)]/90 backdrop-blur-md border-b border-[var(--border-dim)]"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[var(--accent)]"
+            >terminal</span
+          >
+          <span class="font-mono font-bold tracking-tight text-lg"
+            >~/kevin_thulnith</span
+          >
+        </div>
+        <div
+          class="nav-links flex items-center gap-6 text-sm font-mono text-[var(--text-muted)]"
+        >
+          <a class="hover:text-[var(--accent)] transition-colors" href="#about"
+            >_about</a
+          >
+          <a
+            class="hover:text-[var(--accent)] transition-colors"
+            href="#projects"
+            >_projects</a
+          >
+          <a class="hover:text-[var(--accent)] transition-colors" href="#skills"
+            >_stack</a
+          >
+          <a
+            class="px-4 py-2 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-colors rounded-sm"
+            href="#contact"
+          >
+            contact()
+          </a>
+        </div>
+        <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about" class="mobile-nav-link">_about</a>
+      <a href="#projects" class="mobile-nav-link">_projects</a>
+      <a href="#skills" class="mobile-nav-link">_stack</a>
+      <a
+        href="#contact"
+        class="px-6 py-3 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-colors rounded-sm text-lg font-mono"
+        >contact()</a
+      >
+    </div>
+    <main
+      class="flex-grow z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-16 md:space-y-24"
+    >
+      <section
+        class="flex flex-col lg:flex-row gap-8 md:gap-12 items-center justify-center min-h-[40vh] md:min-h-[60vh]"
+        id="about"
+      >
+        <div class="w-full lg:w-2/3">
+          <div
+            class="bg-[var(--bg-terminal)] rounded-lg border border-[var(--border-dim)] shadow-2xl overflow-hidden"
+          >
+            <div
+              class="bg-[#1e1e1e] px-4 py-2 flex items-center gap-2 border-b border-[var(--border-dim)]"
+            >
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              <div
+                class="ml-4 text-xs font-mono text-[var(--text-muted)] flex-grow text-center flex items-center justify-center gap-2"
+              >
+                kevin@portfolio: ~
+                <div class="pulsing-dot" title="Live System"></div>
+              </div>
+            </div>
+            <div
+              class="p-6 md:p-10 font-mono text-sm md:text-base leading-relaxed space-y-4"
+            >
+              <div class="flex gap-2">
+                <span class="text-[var(--accent)]">➜</span>
+                <span class="text-blue-400">~</span>
+                <span class="text-[var(--text-muted)]">$ whoami</span>
+              </div>
+              <div class="pl-6 text-[var(--text-main)]">
+                <h1 class="text-3xl md:text-5xl font-bold mb-2">
+                  Kevin Thulnith
+                </h1>
+                <p class="text-xl md:text-2xl text-[var(--text-muted)]">
+                  Full Stack Developer
+                </p>
+              </div>
+              <div class="flex gap-2 mt-6">
+                <span class="text-[var(--accent)]">➜</span>
+                <span class="text-blue-400">~</span>
+                <span class="text-[var(--text-muted)]"
+                  >$ cat current_focus.txt</span
+                >
+              </div>
+              <div class="pl-6 text-[var(--accent)]">
+                Focusing on: Cloud Native Architectures
+              </div>
+              <div class="flex gap-2 mt-4">
+                <span class="text-[var(--accent)]">➜</span>
+                <span class="text-blue-400">~</span>
+                <span class="text-[var(--text-muted)]">$ cat about.txt</span>
+              </div>
+              <div class="pl-6 text-[var(--text-muted)] max-w-2xl">
+                IT Undergraduate at
+                <span class="text-white">University of Kelaniya</span>. <br />
+                Specializing in scalable web apps with
+                <span class="text-[var(--accent)]">Python/Django</span> &amp;
+                <span class="text-[var(--accent)]">React.js</span>. <br />
+                Currently diving deep into DevOps.<span
+                  class="cursor-block"
+                ></span>
+              </div>
+              <div class="pl-6 mt-6 flex flex-wrap gap-4">
+                <a
+                  class="flex items-center gap-2 text-[var(--text-muted)] hover:text-white transition-colors"
+                  href="https://github.com/kevinThulnith"
+                >
+                  <span class="material-symbols-outlined text-lg">code</span>
+                  GitHub
                 </a>
-</div>
-</div>
-</nav>
-<main class="flex-grow z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
-<section class="flex flex-col lg:flex-row gap-12 items-center justify-center min-h-[60vh]" id="about">
-<div class="w-full lg:w-2/3">
-<div class="bg-[var(--bg-terminal)] rounded-lg border border-[var(--border-dim)] shadow-2xl overflow-hidden">
-<div class="bg-[#1e1e1e] px-4 py-2 flex items-center gap-2 border-b border-[var(--border-dim)]">
-<div class="w-3 h-3 rounded-full bg-red-500"></div>
-<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-<div class="w-3 h-3 rounded-full bg-green-500"></div>
-<div class="ml-4 text-xs font-mono text-[var(--text-muted)] flex-grow text-center flex items-center justify-center gap-2">
-                        kevin@portfolio: ~
-                        <div class="pulsing-dot" title="Live System"></div>
-</div>
-</div>
-<div class="p-6 md:p-10 font-mono text-sm md:text-base leading-relaxed space-y-4">
-<div class="flex gap-2">
-<span class="text-[var(--accent)]">➜</span>
-<span class="text-blue-400">~</span>
-<span class="text-[var(--text-muted)]">$ whoami</span>
-</div>
-<div class="pl-6 text-[var(--text-main)]">
-<h1 class="text-3xl md:text-5xl font-bold mb-2">Kevin Thulnith</h1>
-<p class="text-xl md:text-2xl text-[var(--text-muted)]">Full Stack Developer</p>
-</div>
-<div class="flex gap-2 mt-6">
-<span class="text-[var(--accent)]">➜</span>
-<span class="text-blue-400">~</span>
-<span class="text-[var(--text-muted)]">$ cat current_focus.txt</span>
-</div>
-<div class="pl-6 text-[var(--accent)]">
-                            Focusing on: Cloud Native Architectures
-                        </div>
-<div class="flex gap-2 mt-4">
-<span class="text-[var(--accent)]">➜</span>
-<span class="text-blue-400">~</span>
-<span class="text-[var(--text-muted)]">$ cat about.txt</span>
-</div>
-<div class="pl-6 text-[var(--text-muted)] max-w-2xl">
-                            IT Undergraduate at <span class="text-white">University of Kelaniya</span>. <br/>
-                            Specializing in scalable web apps with <span class="text-[var(--accent)]">Python/Django</span> &amp; <span class="text-[var(--accent)]">React.js</span>. <br/>
-                            Currently diving deep into DevOps.<span class="cursor-block"></span>
-</div>
-<div class="pl-6 mt-6 flex flex-wrap gap-4">
-<a class="flex items-center gap-2 text-[var(--text-muted)] hover:text-white transition-colors" href="https://github.com/kevinThulnith">
-<span class="material-symbols-outlined text-lg">code</span> GitHub
-                            </a>
-<a class="flex items-center gap-2 text-[var(--text-muted)] hover:text-white transition-colors" href="https://www.linkedin.com/in/kevinuluwaduge/">
-<span class="material-symbols-outlined text-lg">work</span> LinkedIn
-                            </a>
-<a class="flex items-center gap-2 text-[var(--text-muted)] hover:text-white transition-colors" href="#">
-<span class="material-symbols-outlined text-lg">terminal</span> LeetCode
-                            </a>
-<a class="flex items-center gap-2 text-[var(--text-muted)] hover:text-white transition-colors" href="#">
-<span class="material-symbols-outlined text-lg">chat</span> Twitter
-                            </a>
-</div>
-</div>
-</div>
-</div>
-<div class="w-full lg:w-1/3 grid grid-cols-2 gap-4">
-<div class="bg-[var(--bg-card)] p-6 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-colors group">
-<span class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-110 transition-transform block">deployed_code</span>
-<h3 class="text-3xl font-bold text-white">15+</h3>
-<p class="text-sm font-mono text-[var(--text-muted)] mt-1">Projects Completed</p>
-</div>
-<div class="bg-[var(--bg-card)] p-6 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-colors group">
-<span class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-110 transition-transform block">school</span>
-<h3 class="text-3xl font-bold text-white">B.Sc.</h3>
-<p class="text-sm font-mono text-[var(--text-muted)] mt-1">IT (Reading)</p>
-</div>
-<div class="bg-[var(--bg-card)] p-6 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-colors col-span-2 group">
-<div class="flex justify-between items-start">
-<div>
-<span class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-110 transition-transform block">code_blocks</span>
-<h3 class="text-xl font-bold text-white">Full Stack</h3>
-<p class="text-sm font-mono text-[var(--text-muted)] mt-1">Django + React + DevOps</p>
-</div>
-<div class="text-right">
-<div class="text-[var(--accent)] text-xs font-mono border border-[var(--accent)] px-2 py-1 rounded inline-block">OPEN FOR HIRE</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="relative" id="skills">
-<div class="flex items-center gap-4 mb-8">
-<span class="text-[var(--accent)] font-mono text-xl">02.</span>
-<h2 class="text-3xl font-bold">Tech Stack Visualization</h2>
-<div class="h-px bg-[var(--border-dim)] flex-grow"></div>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-<div class="lg:col-span-2 bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-lg p-8 relative overflow-hidden min-h-[400px] flex items-center justify-center">
-<div class="absolute inset-0 pointer-events-none">
-<svg class="w-full h-full opacity-30">
-<line stroke="#858585" stroke-dasharray="4 4" stroke-width="1" x1="30%" x2="20%" y1="25%" y2="10%"></line>
-<line stroke="#858585" stroke-dasharray="4 4" stroke-width="1" x1="70%" x2="20%" y1="75%" y2="90%"></line>
-<line stroke="#858585" stroke-dasharray="4 4" stroke-width="1" x1="65%" x2="95%" y1="15%" y2="50%"></line>
-</svg>
-</div>
-<div class="absolute z-20 bg-[var(--bg-dark)] border-2 border-[var(--accent)] w-24 h-24 rounded-full flex flex-col items-center justify-center shadow-[0_0_20px_rgba(204,255,0,0.2)]">
-<span class="material-symbols-outlined text-[var(--accent)] text-3xl">memory</span>
-<span class="text-[10px] font-mono text-[var(--text-muted)] mt-1">CORE</span>
-</div>
-<div class="orbit-ring w-[220px] h-[220px] border-[var(--border-dim)] opacity-60"></div>
-<div class="skill-dot top-[25%] left-[30%]">
-                        Python
-                        <span class="skill-tooltip">Level: Expert</span>
-</div>
-<div class="skill-dot bottom-[25%] right-[30%]">
-                        JavaScript
-                        <span class="skill-tooltip">Level: Expert</span>
-</div>
-<div class="skill-dot top-[15%] right-[35%]">
-                        Java
-                        <span class="skill-tooltip">Level: Advanced</span>
-</div>
-<div class="orbit-ring w-[380px] h-[380px] border-[var(--border-dim)] opacity-40"></div>
-<div class="skill-dot top-[10%] left-[20%] border-gray-600 text-gray-300">
-                        Django
-                        <span class="skill-tooltip">Level: Expert</span>
-</div>
-<div class="skill-dot bottom-[10%] left-[20%] border-gray-600 text-gray-300">
-                        React
-                         <span class="skill-tooltip">Level: Advanced</span>
-</div>
-<div class="skill-dot top-[50%] right-[5%] border-gray-600 text-gray-300">
-                        Spring Boot
-                        <span class="skill-tooltip">Level: Intermediate</span>
-</div>
-<div class="skill-dot bottom-[5%] right-[40%] border-gray-600 text-gray-300">
-                        FastAPI
-                        <span class="skill-tooltip">Level: Advanced</span>
-</div>
-<div class="orbit-ring w-[540px] h-[540px] border-[var(--border-dim)] opacity-20"></div>
-<div class="skill-dot top-[5%] left-[50%] border-gray-700 text-gray-500 text-xs">
-                        Docker
-                        <span class="skill-tooltip">Level: Advanced</span>
-</div>
-<div class="skill-dot bottom-[40%] left-[2%] border-gray-700 text-gray-500 text-xs">
-                        PostgreSQL
-                        <span class="skill-tooltip">Level: Advanced</span>
-</div>
-<div class="skill-dot top-[40%] right-[2%] border-gray-700 text-gray-500 text-xs">
-                        AWS
-                        <span class="skill-tooltip">Level: Intermediate</span>
-</div>
-</div>
-<div class="space-y-4">
-<div class="bg-[var(--bg-card)] p-4 border-l-2 border-[var(--accent)]">
-<h4 class="font-mono text-sm text-[var(--accent)] mb-2">Backend &amp; DB</h4>
-<p class="text-sm text-[var(--text-muted)] leading-relaxed">
-                            Django, DRF, Spring Boot, Laravel, FastAPI, PostgreSQL, MySQL, Redis, SQLite.
-                        </p>
-</div>
-<div class="bg-[var(--bg-card)] p-4 border-l-2 border-gray-600">
-<h4 class="font-mono text-sm text-gray-300 mb-2">Frontend</h4>
-<p class="text-sm text-[var(--text-muted)] leading-relaxed">
-                            React, Vite, Tailwind CSS, AlpineJS, Framer Motion, Thymeleaf.
-                        </p>
-</div>
-<div class="bg-[var(--bg-card)] p-4 border-l-2 border-gray-600">
-<h4 class="font-mono text-sm text-gray-300 mb-2">DevOps &amp; Cloud</h4>
-<p class="text-sm text-[var(--text-muted)] leading-relaxed">
-                            Docker, Nginx, GitHub Actions, Vercel, Railway, Daphne (ASGI).
-                        </p>
-</div>
-<div class="bg-[var(--bg-card)] p-4 border-l-2 border-gray-600">
-<h4 class="font-mono text-sm text-gray-300 mb-2">AI &amp; Security</h4>
-<p class="text-sm text-[var(--text-muted)] leading-relaxed">
-                            Gemini AI, JWT, OAuth2, CSRF Protection, SSL/HTTPS.
-                        </p>
-</div>
-</div>
-</div>
-</section>
-<section id="projects">
-<div class="flex items-center gap-4 mb-8">
-<span class="text-[var(--accent)] font-mono text-xl">03.</span>
-<h2 class="text-3xl font-bold">Project_Manifest</h2>
-<div class="h-px bg-[var(--border-dim)] flex-grow"></div>
-</div>
-<div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory">
-<article class="min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group">
-<div class="absolute -top-8 left-0 flex">
-<div class="bg-[var(--bg-card)] text-xs font-mono text-[var(--accent)] px-4 py-2 border-t border-l border-r border-[var(--border-dim)] rounded-t-lg">
-                            factory_sys.py
-                        </div>
-</div>
-<div class="h-56 bg-[#2a2a2a] flex items-center justify-center border-b border-[var(--border-dim)] relative overflow-hidden group-hover:border-[var(--accent)] transition-colors">
-<img alt="Factory Management System Dashboard" class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYojsSL9F1oriQN7-NkbYMcRJIqd2kbCuym9bm5sE2A59COhIaGlrPl7U_w75Qsf6DmRpkvf9SqF9PhKshAPsaCwG6GFyNixAKiKnwJDG0RYSHOTJdaW-lWXe-MYh6qWLKY6sbynkkyrZwHxhfAg8RYCEiRHNVPCp6y0ooR_n3v1j3SBJJxs1GWVF3EldK823B2MA4zio-C9qM3GwKzXl-zmjUDhkhP0N087IADUfdOQBtGzuiNhOzarnBE-AC2MKrzuzlQec27T0q"/>
-<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 gap-3">
-<a class="bg-[var(--accent)] text-black font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] shadow-[0_0_15px_rgba(204,255,0,0.5)] hover:shadow-[0_0_25px_rgba(204,255,0,0.8)] transition-shadow" href="#">
-                                LIVE DEMO
-                            </a>
-<a class="bg-black/80 text-[var(--accent)] font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] hover:bg-black transition-colors" href="https://github.com/kevinThulnith/Factory-Management-System">
-                                SOURCE
-                            </a>
-</div>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold text-white">Factory Management System</h3>
-<div class="flex gap-2 text-[var(--text-muted)]">
-<span class="material-symbols-outlined text-lg" title="Docker">dock</span>
-<span class="material-symbols-outlined text-lg" title="Database">database</span>
-</div>
-</div>
-<p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">
-                            Seamless factory platform with real-time WebSocket updates via Django Channels &amp; Redis. Containerized with Docker.
-                        </p>
-<div class="mt-auto">
-<div class="flex flex-wrap gap-2 text-xs font-mono text-[var(--accent)]">
-<span>Django</span>
-<span>React</span>
-<span>Redis</span>
-<span>Docker</span>
-</div>
-</div>
-</div>
-</article>
-<article class="min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group">
-<div class="absolute -top-8 left-0 flex">
-<div class="bg-[var(--bg-card)] text-xs font-mono text-[var(--accent)] px-4 py-2 border-t border-l border-r border-[var(--border-dim)] rounded-t-lg">
-                            inventory.jsx
-                        </div>
-</div>
-<div class="h-56 bg-[#2a2a2a] flex items-center justify-center border-b border-[var(--border-dim)] relative overflow-hidden group-hover:border-[var(--accent)] transition-colors">
-<img alt="Inventory Management System Interface" class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5QHG01xtwq-89Jk0JjFVLTm-ln5tKWg3dktr5BuXY8j-oWlB4T0U7p8AALubbpeBmqtCQVP5k418qJdOw0m3fhtYPSUFVuYeG7QCkUTv5f1p4HbRt29kr9QCumiVXhMKoj7BGyn9GjEvUhvcQnTFF-fXlgjMaY7IwiWSnZtWnwsl_UFRt3-DM4SH_m-ksoOzYUfcxcBsB9g9uVjUWChS4jT74PyDKVu8vDerPJjY6vG3RH7FN_TKEI7_RPpxxQf4VdiwLNOJXz06a"/>
-<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 gap-3">
-<a class="bg-[var(--accent)] text-black font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] shadow-[0_0_15px_rgba(204,255,0,0.5)] hover:shadow-[0_0_25px rgba(204,255,0,0.8)] transition-shadow" href="https://inventory-management-system-et5h.vercel.app">
-                                LIVE DEMO
-                            </a>
-<a class="bg-black/80 text-[var(--accent)] font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] hover:bg-black transition-colors" href="https://github.com/kevinThulnith/Inventory-Management-System">
-                                SOURCE
-                            </a>
-</div>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold text-white">Inventory Management</h3>
-<div class="flex gap-2 text-[var(--text-muted)]">
-<span class="material-symbols-outlined text-lg">api</span>
-</div>
-</div>
-<p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">
-                            Full-featured IMS with clean REST API backend. Built with 'uv' for fast dependency management. Live on Vercel.
-                        </p>
-<div class="mt-auto">
-<div class="flex flex-wrap gap-2 text-xs font-mono text-[var(--accent)]">
-<span>PostgreSQL</span>
-<span>React</span>
-<span>Tailwind</span>
-<span>JWT</span>
-</div>
-</div>
-</div>
-</article>
-<article class="min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group">
-<div class="absolute -top-8 left-0 flex">
-<div class="bg-[var(--bg-card)] text-xs font-mono text-[var(--accent)] px-4 py-2 border-t border-l border-r border-[var(--border-dim)] rounded-t-lg">
-                            devops_pipeline.yml
-                        </div>
-</div>
-<div class="h-56 bg-[#2a2a2a] flex items-center justify-center border-b border-[var(--border-dim)] relative overflow-hidden group-hover:border-[var(--accent)] transition-colors">
-<img alt="DevOps Pipeline Visualization" class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALGKpPvposnGzWmINZfx9aPdQiB6w2sXCoZ2FAxa_CcS4Qv7t9xp7Sq0mxt0k_DJqRlP0v5xMMVvTlDO2aDcl-kINneUZlW1RX0x0j1V4U8iIw06pKutfNrBrX51CBlxlMRhuJqNinIGk626zxLTlfG7r9tXsXz4hpVS3Bt1ZC6CIIFiKya3oxkCCrWM9jZVjh3FsAluYnxSPVhLIPcu4uuCECodNPcavGny7uGLNeaBgHER9tau0-s3H45-tPDTuzmMMOKYIFOIwx"/>
-<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 gap-3">
-<a class="bg-[var(--accent)] text-black font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] shadow-[0_0_15px_rgba(204,255,0,0.5)] hover:shadow-[0_0_25px rgba(204,255,0,0.8)] transition-shadow" href="#">
-                                LIVE DEMO
-                            </a>
-<a class="bg-black/80 text-[var(--accent)] font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] hover:bg-black transition-colors" href="https://github.com/kevinThulnith/devops-project">
-                                SOURCE
-                            </a>
-</div>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold text-white">DevOps IMS Project</h3>
-<div class="flex gap-2 text-[var(--text-muted)]">
-<span class="material-symbols-outlined text-lg">cloud_sync</span>
-</div>
-</div>
-<p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">
-                            Live-reloading system built as a DevOps learning tool. Docker Compose orchestration with Nginx reverse proxy.
-                        </p>
-<div class="mt-auto">
-<div class="flex flex-wrap gap-2 text-xs font-mono text-[var(--accent)]">
-<span>Docker</span>
-<span>Nginx</span>
-<span>Channels</span>
-<span>Redis</span>
-</div>
-</div>
-</div>
-</article>
-<article class="min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group">
-<div class="absolute -top-8 left-0 flex">
-<div class="bg-[var(--bg-card)] text-xs font-mono text-[var(--accent)] px-4 py-2 border-t border-l border-r border-[var(--border-dim)] rounded-t-lg">
-                            gemini_ai.ts
-                        </div>
-</div>
-<div class="h-56 bg-[#2a2a2a] flex items-center justify-center border-b border-[var(--border-dim)] relative overflow-hidden group-hover:border-[var(--accent)] transition-colors">
-<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 gap-3">
-<a class="bg-[var(--accent)] text-black font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] shadow-[0_0_15px_rgba(204,255,0,0.5)]" href="https://multi-stage-react-project.vercel.app">LIVE DEMO</a>
-<a class="bg-black/80 text-[var(--accent)] font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)]" href="https://github.com/kevinThulnith/multi-stage-react-project">SOURCE</a>
-</div>
-<span class="material-symbols-outlined text-6xl text-gray-600">psychology</span>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold text-white">React + Gemini AI</h3>
-</div>
-<p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">
-                            Multi-stage Dockerized React app with SSR, integrated with Google's Gemini AI.
-                        </p>
-<div class="mt-auto">
-<div class="flex flex-wrap gap-2 text-xs font-mono text-[var(--accent)]">
-<span>React</span>
-<span>Gemini API</span>
-<span>SSR</span>
-</div>
-</div>
-</div>
-</article>
-<article class="min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group">
-<div class="absolute -top-8 left-0 flex">
-<div class="bg-[var(--bg-card)] text-xs font-mono text-[var(--accent)] px-4 py-2 border-t border-l border-r border-[var(--border-dim)] rounded-t-lg">
-                            ocean_view.java
-                        </div>
-</div>
-<div class="h-56 bg-[#2a2a2a] flex items-center justify-center border-b border-[var(--border-dim)] relative overflow-hidden group-hover:border-[var(--accent)] transition-colors">
-<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 gap-3">
-<a class="bg-[var(--accent)] text-black font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] shadow-[0_0_15px_rgba(204,255,0,0.5)]" href="#">LIVE DEMO</a>
-<a class="bg-black/80 text-[var(--accent)] font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)]" href="https://github.com/kevinThulnith/Reservation-System">SOURCE</a>
-</div>
-<span class="material-symbols-outlined text-6xl text-gray-600">hotel</span>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<div class="flex justify-between items-start mb-2">
-<h3 class="text-xl font-bold text-white">OceanView Reservation</h3>
-</div>
-<p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">
-                            Backend API for managing reservations with Spring ecosystem.
-                        </p>
-<div class="mt-auto">
-<div class="flex flex-wrap gap-2 text-xs font-mono text-[var(--accent)]">
-<span>Spring Boot</span>
-<span>JPA</span>
-<span>PostgreSQL</span>
-</div>
-</div>
-</div>
-</article>
-</div>
-<div class="text-center mt-8">
-<a class="inline-flex items-center gap-2 text-[var(--accent)] font-mono hover:underline" href="https://github.com/kevinThulnith">
-<span>view_all_repositories()</span>
-<span class="material-symbols-outlined text-sm">arrow_forward</span>
-</a>
-</div>
-</section>
-<section>
-<div class="flex items-center gap-4 mb-8">
-<span class="text-[var(--accent)] font-mono text-xl">04.</span>
-<h2 class="text-3xl font-bold">Mini_Executables</h2>
-<div class="h-px bg-[var(--border-dim)] flex-grow"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-<a class="bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative" href="https://github.com/kevinThulnith/game-cave">
-<div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-yellow-400" title="JavaScript/React"></div>
-<div class="flex justify-between items-center mb-2">
-<h3 class="font-bold text-white group-hover:text-[var(--accent)]">Game Cave</h3>
-<span class="material-symbols-outlined text-[var(--text-muted)]">sports_esports</span>
-</div>
-<p class="text-xs text-[var(--text-muted)]">12 games in one React/Vite app. SSR &amp; Docker supported.</p>
-</a>
-<a class="bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative" href="https://github.com/kevinThulnith/google-authentication">
-<div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-blue-500" title="Python/Django"></div>
-<div class="flex justify-between items-center mb-2">
-<h3 class="font-bold text-white group-hover:text-[var(--accent)]">Google OAuth2</h3>
-<span class="material-symbols-outlined text-[var(--text-muted)]">lock</span>
-</div>
-<p class="text-xs text-[var(--text-muted)]">Full-stack Django/React template with JWT session management.</p>
-</a>
-<a class="bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative" href="https://github.com/kevinThulnith/book-shop">
-<div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-orange-600" title="Java"></div>
-<div class="flex justify-between items-center mb-2">
-<h3 class="font-bold text-white group-hover:text-[var(--accent)]">Book Shop</h3>
-<span class="material-symbols-outlined text-[var(--text-muted)]">menu_book</span>
-</div>
-<p class="text-xs text-[var(--text-muted)]">Spring Boot backend with Thymeleaf rendered views.</p>
-</a>
-<a class="bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative" href="http://galleryCafe.infinityfreeapp.com">
-<div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-purple-500" title="PHP"></div>
-<div class="flex justify-between items-center mb-2">
-<h3 class="font-bold text-white group-hover:text-[var(--accent)]">Gallery Café</h3>
-<span class="material-symbols-outlined text-[var(--text-muted)]">restaurant</span>
-</div>
-<p class="text-xs text-[var(--text-muted)]">PHP/MySQL restaurant app with reservations and ordering.</p>
-</a>
-<a class="bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative" href="https://github.com/kevinThulnith/Laravel-crud-app">
-<div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-red-500" title="Laravel"></div>
-<div class="flex justify-between items-center mb-2">
-<h3 class="font-bold text-white group-hover:text-[var(--accent)]">Laravel CRUD</h3>
-<span class="material-symbols-outlined text-[var(--text-muted)]">php</span>
-</div>
-<p class="text-xs text-[var(--text-muted)]">Clean CRUD with Breeze auth and Tailwind.</p>
-</a>
-<a class="bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative" href="https://github.com/kevinThulnith/model-based-app">
-<div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-blue-400" title="Python"></div>
-<div class="flex justify-between items-center mb-2">
-<h3 class="font-bold text-white group-hover:text-[var(--accent)]">ML Health App</h3>
-<span class="material-symbols-outlined text-[var(--text-muted)]">health_and_safety</span>
-</div>
-<p class="text-xs text-[var(--text-muted)]">Health predictions using Python ML models.</p>
-</a>
-</div>
-</section>
-<section>
-<div class="flex items-center gap-4 mb-8">
-<span class="text-[var(--accent)] font-mono text-xl">05.</span>
-<h2 class="text-3xl font-bold">System_Logs (Experience)</h2>
-<div class="h-px bg-[var(--border-dim)] flex-grow"></div>
-</div>
-<div class="relative pl-10 space-y-8">
-<div class="timeline-line"></div>
-<div class="relative">
-<div class="absolute -left-[27px] w-4 h-4 rounded-full bg-[var(--bg-dark)] border-2 border-[var(--accent)]"></div>
-<div class="bg-[var(--bg-card)] p-5 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-all">
-<span class="text-[var(--accent)] font-mono text-xs mb-1 block">2022 - Present</span>
-<h3 class="text-lg font-bold text-white">IT Undergraduate</h3>
-<p class="text-sm text-[var(--text-muted)] font-mono">University of Kelaniya</p>
-<p class="text-sm text-[var(--text-muted)] mt-2">Specializing in Software Engineering and Information Systems.</p>
-</div>
-</div>
-<div class="relative">
-<div class="absolute -left-[27px] w-4 h-4 rounded-full bg-[var(--bg-dark)] border-2 border-gray-500"></div>
-<div class="bg-[var(--bg-card)] p-5 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-all">
-<span class="text-[var(--text-muted)] font-mono text-xs mb-1 block">2023 - Present</span>
-<h3 class="text-lg font-bold text-white">Freelance Developer</h3>
-<p class="text-sm text-[var(--text-muted)] font-mono">Self-Employed</p>
-<p class="text-sm text-[var(--text-muted)] mt-2">Developing custom web solutions using React, Django, and PHP for local businesses.</p>
-</div>
-</div>
-<div class="relative">
-<div class="absolute -left-[27px] w-4 h-4 rounded-full bg-[var(--bg-dark)] border-2 border-gray-500"></div>
-<div class="bg-[var(--bg-card)] p-5 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-all">
-<span class="text-[var(--text-muted)] font-mono text-xs mb-1 block">2021</span>
-<h3 class="text-lg font-bold text-white">Started Coding Journey</h3>
-<p class="text-sm text-[var(--text-muted)] font-mono">Hello World</p>
-<p class="text-sm text-[var(--text-muted)] mt-2">Initialized learning path in Python and Web Technologies.</p>
-</div>
-</div>
-</div>
-</section>
-<section class="pb-12" id="contact">
-<div class="bg-[var(--bg-terminal)] border border-[var(--border-dim)] rounded-lg p-8 md:p-12">
-<div class="text-center mb-8">
-<span class="material-symbols-outlined text-[var(--accent)] text-4xl mb-4">alternate_email</span>
-<h2 class="text-3xl font-bold mb-4">Initialize Connection</h2>
-<p class="text-[var(--text-muted)] max-w-lg mx-auto">
-                        Available for freelance web development projects and open-source contributions. 
-                        Ping me if you want to collaborate on something cool.
-                    </p>
-</div>
-<div class="max-w-md mx-auto mb-8">
-<div class="bg-black border border-[var(--border-dim)] p-4 rounded flex items-center shadow-inner">
-<span class="text-[var(--accent)] mr-2">➜</span>
-<input class="bg-transparent border-none text-[var(--text-main)] w-full focus:ring-0 font-mono placeholder-gray-600" placeholder="enter_email_for_newsletter..." type="email"/>
-<button class="text-[var(--accent)] font-bold hover:text-white transition-colors">
-                            ENTER
-                        </button>
-</div>
-</div>
-<div class="flex flex-col md:flex-row items-center justify-center gap-4">
-<a class="bg-[var(--accent)] text-black font-bold font-mono px-6 py-3 rounded hover:opacity-90 transition-opacity w-full md:w-auto text-center" href="mailto:kevinthulnith@gmail.com">
-                        send_email()
-                    </a>
-<a class="bg-transparent border border-[var(--accent)] text-[var(--accent)] font-bold font-mono px-6 py-3 rounded hover:bg-[var(--accent)] hover:text-black transition-colors w-full md:w-auto text-center" href="https://www.linkedin.com/in/kevinuluwaduge/">
-                        connect_linkedin()
-                    </a>
-</div>
-<div class="mt-12 pt-8 border-t border-[var(--border-dim)] flex flex-col md:flex-row justify-between items-center text-sm text-[var(--text-muted)]">
-<div class="font-mono mb-4 md:mb-0">
-                        © 2026 Kevin Thulnith. All systems operational.
-                    </div>
-<div class="flex gap-6">
-<a class="hover:text-[var(--accent)] transition-colors" href="https://github.com/kevinThulnith">GitHub</a>
-<a class="hover:text-[var(--accent)] transition-colors" href="https://www.instagram.com/kevin_thulnith/">Instagram</a>
-<a class="hover:text-[var(--accent)] transition-colors" href="https://facebook.com/kevin.uluwaduge">Facebook</a>
-</div>
-</div>
-</div>
-</section>
-</main>
-</body></html>
+                <a
+                  class="flex items-center gap-2 text-[var(--text-muted)] hover:text-white transition-colors"
+                  href="https://www.linkedin.com/in/kevinuluwaduge/"
+                >
+                  <span class="material-symbols-outlined text-lg">work</span>
+                  LinkedIn
+                </a>
+                <a
+                  class="flex items-center gap-2 text-[var(--text-muted)] hover:text-white transition-colors"
+                  href="#"
+                >
+                  <span class="material-symbols-outlined text-lg"
+                    >terminal</span
+                  >
+                  LeetCode
+                </a>
+                <a
+                  class="flex items-center gap-2 text-[var(--text-muted)] hover:text-white transition-colors"
+                  href="#"
+                >
+                  <span class="material-symbols-outlined text-lg">chat</span>
+                  Twitter
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/3 grid grid-cols-2 gap-4">
+          <div
+            class="bg-[var(--bg-card)] p-6 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-colors group"
+          >
+            <span
+              class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-110 transition-transform block"
+              >deployed_code</span
+            >
+            <h3 class="text-3xl font-bold text-white">15+</h3>
+            <p class="text-sm font-mono text-[var(--text-muted)] mt-1">
+              Projects Completed
+            </p>
+          </div>
+          <div
+            class="bg-[var(--bg-card)] p-6 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-colors group"
+          >
+            <span
+              class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-110 transition-transform block"
+              >school</span
+            >
+            <h3 class="text-3xl font-bold text-white">B.Sc.</h3>
+            <p class="text-sm font-mono text-[var(--text-muted)] mt-1">
+              IT (Reading)
+            </p>
+          </div>
+          <div
+            class="bg-[var(--bg-card)] p-6 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-colors col-span-2 group"
+          >
+            <div class="flex justify-between items-start">
+              <div>
+                <span
+                  class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-110 transition-transform block"
+                  >code_blocks</span
+                >
+                <h3 class="text-xl font-bold text-white">Full Stack</h3>
+                <p class="text-sm font-mono text-[var(--text-muted)] mt-1">
+                  Django + React + DevOps
+                </p>
+              </div>
+              <div class="text-right">
+                <div
+                  class="text-[var(--accent)] text-xs font-mono border border-[var(--accent)] px-2 py-1 rounded inline-block"
+                >
+                  OPEN FOR HIRE
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="reveal relative" id="skills">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-[var(--accent)] font-mono text-xl">02.</span>
+          <h2 class="text-3xl font-bold">Tech Stack Visualization</h2>
+          <div class="h-px bg-[var(--border-dim)] flex-grow"></div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Orbit Visualization -->
+          <div
+            class="lg:col-span-2 bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-lg p-8 md:p-8 p-4 relative overflow-hidden min-h-[320px] md:min-h-[520px]"
+            id="orbitViz"
+          >
+            <div class="orbit-ring-visual ring-1" data-ring="1"></div>
+            <div class="orbit-ring-visual ring-2" data-ring="2"></div>
+            <div class="orbit-ring-visual ring-3" data-ring="3"></div>
+            <div class="orbit-ring-visual ring-4" data-ring="4"></div>
+            <div
+              class="orbit-center"
+              id="orbitCenter"
+              title="Click to reset view"
+            >
+              <span
+                class="material-symbols-outlined text-[var(--accent)] text-2xl"
+                >memory</span
+              >
+              <span class="text-[9px] font-mono text-[var(--text-muted)] mt-0.5"
+                >CORE</span
+              >
+            </div>
+            <!-- Skill nodes injected by JS -->
+            <div class="skill-detail-panel" id="skillDetail">
+              <div class="flex justify-between items-center mb-2">
+                <span
+                  class="font-mono font-bold text-[var(--accent)] text-sm"
+                  id="detailName"
+                  >-</span
+                >
+                <span
+                  class="text-xs font-mono text-[var(--text-muted)]"
+                  id="detailYears"
+                  >-</span
+                >
+              </div>
+              <div class="detail-level-bar mb-2">
+                <div
+                  class="detail-level-fill"
+                  id="detailLevelFill"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div
+                class="flex justify-between text-xs font-mono text-[var(--text-muted)] mb-2"
+              >
+                <span id="detailLevel">-</span>
+                <span id="detailPercent">0%</span>
+              </div>
+              <p
+                class="text-xs text-[var(--text-muted)] leading-relaxed"
+                id="detailDesc"
+              >
+                -
+              </p>
+            </div>
+            <div class="absolute bottom-3 right-3 flex gap-2 z-20">
+              <button
+                class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors p-1"
+                id="orbitToggle"
+                title="Pause / Resume orbit"
+              >
+                <span class="material-symbols-outlined text-base">pause</span>
+              </button>
+              <button
+                class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors p-1"
+                id="orbitReset"
+                title="Reset filters"
+              >
+                <span class="material-symbols-outlined text-base">refresh</span>
+              </button>
+            </div>
+          </div>
+          <!-- Interactive Sidebar -->
+          <div class="space-y-4" id="skillSidebar">
+            <div
+              class="category-card bg-[var(--bg-card)] p-4 border-l-2 border-[var(--accent)]"
+              data-category="backend"
+            >
+              <div class="flex justify-between items-center">
+                <h4 class="font-mono text-sm text-[var(--accent)] mb-0">
+                  Backend &amp; DB
+                </h4>
+                <span
+                  class="material-symbols-outlined text-[var(--text-muted)] cat-arrow"
+                  >expand_more</span
+                >
+              </div>
+              <p class="text-xs text-[var(--text-muted)] mt-1">
+                Django, DRF, Spring Boot, FastAPI, Laravel, PostgreSQL, MySQL,
+                Redis
+              </p>
+              <div class="category-skills-list mt-3 space-y-3">
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">Python</span
+                    ><span class="text-[var(--accent)]">95%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="95"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">Django / DRF</span
+                    ><span class="text-[var(--accent)]">95%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="95"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">FastAPI</span
+                    ><span class="text-[var(--accent)]">80%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="80"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]"
+                      >Java / Spring Boot</span
+                    ><span class="text-[var(--accent)]">70%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="70"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">Laravel</span
+                    ><span class="text-[var(--accent)]">60%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="60"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">PostgreSQL</span
+                    ><span class="text-[var(--accent)]">85%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="85"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">MySQL</span
+                    ><span class="text-[var(--accent)]">75%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="75"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">Redis</span
+                    ><span class="text-[var(--accent)]">70%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="70"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">PHP</span
+                    ><span class="text-[var(--accent)]">65%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="65"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="category-card bg-[var(--bg-card)] p-4 border-l-2 border-gray-600"
+              data-category="frontend"
+            >
+              <div class="flex justify-between items-center">
+                <h4 class="font-mono text-sm text-gray-300 mb-0">Frontend</h4>
+                <span
+                  class="material-symbols-outlined text-[var(--text-muted)] cat-arrow"
+                  >expand_more</span
+                >
+              </div>
+              <p class="text-xs text-[var(--text-muted)] mt-1">
+                React, Vite, Tailwind CSS, TypeScript, AlpineJS, Framer Motion
+              </p>
+              <div class="category-skills-list mt-3 space-y-3">
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">JavaScript</span
+                    ><span class="text-[var(--accent)]">90%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="90"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">TypeScript</span
+                    ><span class="text-[var(--accent)]">82%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="82"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">React</span
+                    ><span class="text-[var(--accent)]">85%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="85"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">Tailwind CSS</span
+                    ><span class="text-[var(--accent)]">90%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="90"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">Node.js</span
+                    ><span class="text-[var(--accent)]">78%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="78"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="category-card bg-[var(--bg-card)] p-4 border-l-2 border-gray-600"
+              data-category="devops"
+            >
+              <div class="flex justify-between items-center">
+                <h4 class="font-mono text-sm text-gray-300 mb-0">
+                  DevOps &amp; Cloud
+                </h4>
+                <span
+                  class="material-symbols-outlined text-[var(--text-muted)] cat-arrow"
+                  >expand_more</span
+                >
+              </div>
+              <p class="text-xs text-[var(--text-muted)] mt-1">
+                Docker, Nginx, GitHub Actions, Vercel, Railway, AWS
+              </p>
+              <div class="category-skills-list mt-3 space-y-3">
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">Docker</span
+                    ><span class="text-[var(--accent)]">80%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="80"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">Nginx</span
+                    ><span class="text-[var(--accent)]">75%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="75"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">GitHub Actions</span
+                    ><span class="text-[var(--accent)]">70%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="70"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">Vercel</span
+                    ><span class="text-[var(--accent)]">75%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="75"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">AWS</span
+                    ><span class="text-[var(--accent)]">60%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="60"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="category-card bg-[var(--bg-card)] p-4 border-l-2 border-gray-600"
+              data-category="ai"
+            >
+              <div class="flex justify-between items-center">
+                <h4 class="font-mono text-sm text-gray-300 mb-0">
+                  AI &amp; Security
+                </h4>
+                <span
+                  class="material-symbols-outlined text-[var(--text-muted)] cat-arrow"
+                  >expand_more</span
+                >
+              </div>
+              <p class="text-xs text-[var(--text-muted)] mt-1">
+                Gemini AI, JWT, OAuth2, CSRF, SHAP/LIME, SSL/HTTPS
+              </p>
+              <div class="category-skills-list mt-3 space-y-3">
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">Gemini AI</span
+                    ><span class="text-[var(--accent)]">70%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="70"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">JWT / OAuth2</span
+                    ><span class="text-[var(--accent)]">85%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="85"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-[var(--text-muted)]">ML Models</span
+                    ><span class="text-[var(--accent)]">65%</span>
+                  </div>
+                  <div class="prof-bar">
+                    <div class="prof-fill" data-width="65"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="reveal" id="projects">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-[var(--accent)] font-mono text-xl">03.</span>
+          <h2 class="text-3xl font-bold">Project_Manifest</h2>
+          <div class="h-px bg-[var(--border-dim)] flex-grow"></div>
+        </div>
+        <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory">
+          <article
+            class="min-w-[280px] sm:min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group"
+          >
+            <div class="absolute -top-8 left-0 flex">
+              <div
+                class="bg-[var(--bg-card)] text-xs font-mono text-[var(--accent)] px-4 py-2 border-t border-l border-r border-[var(--border-dim)] rounded-t-lg"
+              >
+                factory_sys.py
+              </div>
+            </div>
+            <div
+              class="h-56 bg-[#2a2a2a] flex items-center justify-center border-b border-[var(--border-dim)] relative overflow-hidden group-hover:border-[var(--accent)] transition-colors"
+            >
+              <img
+                alt="Factory Management System Dashboard"
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYojsSL9F1oriQN7-NkbYMcRJIqd2kbCuym9bm5sE2A59COhIaGlrPl7U_w75Qsf6DmRpkvf9SqF9PhKshAPsaCwG6GFyNixAKiKnwJDG0RYSHOTJdaW-lWXe-MYh6qWLKY6sbynkkyrZwHxhfAg8RYCEiRHNVPCp6y0ooR_n3v1j3SBJJxs1GWVF3EldK823B2MA4zio-C9qM3GwKzXl-zmjUDhkhP0N087IADUfdOQBtGzuiNhOzarnBE-AC2MKrzuzlQec27T0q"
+              />
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 gap-3"
+              >
+                <a
+                  class="bg-[var(--accent)] text-black font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] shadow-[0_0_15px_rgba(204,255,0,0.5)] hover:shadow-[0_0_25px_rgba(204,255,0,0.8)] transition-shadow"
+                  href="#"
+                >
+                  LIVE DEMO
+                </a>
+                <a
+                  class="bg-black/80 text-[var(--accent)] font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] hover:bg-black transition-colors"
+                  href="https://github.com/kevinThulnith/Factory-Management-System"
+                >
+                  SOURCE
+                </a>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white">
+                  Factory Management System
+                </h3>
+                <div class="flex gap-2 text-[var(--text-muted)]">
+                  <span class="material-symbols-outlined text-lg" title="Docker"
+                    >dock</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-lg"
+                    title="Database"
+                    >database</span
+                  >
+                </div>
+              </div>
+              <p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">
+                Full-stack factory management with real-time WebSocket updates
+                via Django Channels &amp; Redis. Google OAuth2, JWT auth, Nginx
+                reverse proxy, all orchestrated with Docker Compose.
+              </p>
+              <div class="mt-auto">
+                <div
+                  class="flex flex-wrap gap-2 text-xs font-mono text-[var(--accent)]"
+                >
+                  <span>Django</span>
+                  <span>React</span>
+                  <span>Redis</span>
+                  <span>Docker</span>
+                  <span>WebSocket</span>
+                  <span>OAuth2</span>
+                  <span>Nginx</span>
+                  <span>Prisma</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article
+            class="min-w-[280px] sm:min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group"
+          >
+            <div class="absolute -top-8 left-0 flex">
+              <div
+                class="bg-[var(--bg-card)] text-xs font-mono text-[var(--accent)] px-4 py-2 border-t border-l border-r border-[var(--border-dim)] rounded-t-lg"
+              >
+                inventory.jsx
+              </div>
+            </div>
+            <div
+              class="h-56 bg-[#2a2a2a] flex items-center justify-center border-b border-[var(--border-dim)] relative overflow-hidden group-hover:border-[var(--accent)] transition-colors"
+            >
+              <img
+                alt="Inventory Management System Interface"
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5QHG01xtwq-89Jk0JjFVLTm-ln5tKWg3dktr5BuXY8j-oWlB4T0U7p8AALubbpeBmqtCQVP5k418qJdOw0m3fhtYPSUFVuYeG7QCkUTv5f1p4HbRt29kr9QCumiVXhMKoj7BGyn9GjEvUhvcQnTFF-fXlgjMaY7IwiWSnZtWnwsl_UFRt3-DM4SH_m-ksoOzYUfcxcBsB9g9uVjUWChS4jT74PyDKVu8vDerPJjY6vG3RH7FN_TKEI7_RPpxxQf4VdiwLNOJXz06a"
+              />
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 gap-3"
+              >
+                <a
+                  class="bg-[var(--accent)] text-black font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] shadow-[0_0_15px_rgba(204,255,0,0.5)] hover:shadow-[0_0_25px rgba(204,255,0,0.8)] transition-shadow"
+                  href="https://inventory-management-system-et5h.vercel.app"
+                >
+                  LIVE DEMO
+                </a>
+                <a
+                  class="bg-black/80 text-[var(--accent)] font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] hover:bg-black transition-colors"
+                  href="https://github.com/kevinThulnith/Inventory-Management-System"
+                >
+                  SOURCE
+                </a>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white">
+                  Inventory Management
+                </h3>
+                <div class="flex gap-2 text-[var(--text-muted)]">
+                  <span class="material-symbols-outlined text-lg">api</span>
+                </div>
+              </div>
+              <p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">
+                Full-featured Inventory Management System with Django REST
+                Framework backend &amp; React/Vite frontend. Fast dependency
+                management with uv. Live on Vercel.
+              </p>
+              <div class="mt-auto">
+                <div
+                  class="flex flex-wrap gap-2 text-xs font-mono text-[var(--accent)]"
+                >
+                  <span>DRF</span>
+                  <span>React</span>
+                  <span>PostgreSQL</span>
+                  <span>Tailwind</span>
+                  <span>JWT</span>
+                  <span>Axios</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article
+            class="min-w-[280px] sm:min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group"
+          >
+            <div class="absolute -top-8 left-0 flex">
+              <div
+                class="bg-[var(--bg-card)] text-xs font-mono text-[var(--accent)] px-4 py-2 border-t border-l border-r border-[var(--border-dim)] rounded-t-lg"
+              >
+                devops_pipeline.yml
+              </div>
+            </div>
+            <div
+              class="h-56 bg-[#2a2a2a] flex items-center justify-center border-b border-[var(--border-dim)] relative overflow-hidden group-hover:border-[var(--accent)] transition-colors"
+            >
+              <img
+                alt="DevOps Pipeline Visualization"
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuALGKpPvposnGzWmINZfx9aPdQiB6w2sXCoZ2FAxa_CcS4Qv7t9xp7Sq0mxt0k_DJqRlP0v5xMMVvTlDO2aDcl-kINneUZlW1RX0x0j1V4U8iIw06pKutfNrBrX51CBlxlMRhuJqNinIGk626zxLTlfG7r9tXsXz4hpVS3Bt1ZC6CIIFiKya3oxkCCrWM9jZVjh3FsAluYnxSPVhLIPcu4uuCECodNPcavGny7uGLNeaBgHER9tau0-s3H45-tPDTuzmMMOKYIFOIwx"
+              />
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 gap-3"
+              >
+                <a
+                  class="bg-[var(--accent)] text-black font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] shadow-[0_0_15px_rgba(204,255,0,0.5)] hover:shadow-[0_0_25px rgba(204,255,0,0.8)] transition-shadow"
+                  href="#"
+                >
+                  LIVE DEMO
+                </a>
+                <a
+                  class="bg-black/80 text-[var(--accent)] font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] hover:bg-black transition-colors"
+                  href="https://github.com/kevinThulnith/devops-project"
+                >
+                  SOURCE
+                </a>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white">DevOps IMS Project</h3>
+                <div class="flex gap-2 text-[var(--text-muted)]">
+                  <span class="material-symbols-outlined text-lg"
+                    >cloud_sync</span
+                  >
+                </div>
+              </div>
+              <p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">
+                Live-reloading IMS with Redis pub/sub &amp; WebSockets via
+                Django Channels. Docker Compose orchestration with Nginx reverse
+                proxy. Full CI/CD ready.
+              </p>
+              <div class="mt-auto">
+                <div
+                  class="flex flex-wrap gap-2 text-xs font-mono text-[var(--accent)]"
+                >
+                  <span>Docker</span>
+                  <span>Nginx</span>
+                  <span>Channels</span>
+                  <span>Redis</span>
+                  <span>WebSocket</span>
+                  <span>Compose</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article
+            class="min-w-[280px] sm:min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group"
+          >
+            <div class="absolute -top-8 left-0 flex">
+              <div
+                class="bg-[var(--bg-card)] text-xs font-mono text-[var(--accent)] px-4 py-2 border-t border-l border-r border-[var(--border-dim)] rounded-t-lg"
+              >
+                gemini_ai.ts
+              </div>
+            </div>
+            <div
+              class="h-56 bg-[#2a2a2a] flex items-center justify-center border-b border-[var(--border-dim)] relative overflow-hidden group-hover:border-[var(--accent)] transition-colors"
+            >
+              <div
+                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 gap-3"
+              >
+                <a
+                  class="bg-[var(--accent)] text-black font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] shadow-[0_0_15px_rgba(204,255,0,0.5)]"
+                  href="https://multi-stage-react-project.vercel.app"
+                  >LIVE DEMO</a
+                >
+                <a
+                  class="bg-black/80 text-[var(--accent)] font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)]"
+                  href="https://github.com/kevinThulnith/multi-stage-react-project"
+                  >SOURCE</a
+                >
+              </div>
+              <span class="material-symbols-outlined text-6xl text-gray-600"
+                >psychology</span
+              >
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white">React + Gemini AI</h3>
+              </div>
+              <p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">
+                Multi-stage Dockerized React/TypeScript app with Server-Side
+                Rendering, integrated with Google's Gemini AI. Deployed on
+                Vercel with Nginx.
+              </p>
+              <div class="mt-auto">
+                <div
+                  class="flex flex-wrap gap-2 text-xs font-mono text-[var(--accent)]"
+                >
+                  <span>React</span>
+                  <span>TypeScript</span>
+                  <span>Gemini AI</span>
+                  <span>SSR</span>
+                  <span>Docker</span>
+                  <span>Vercel</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article
+            class="min-w-[280px] sm:min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group"
+          >
+            <div class="absolute -top-8 left-0 flex">
+              <div
+                class="bg-[var(--bg-card)] text-xs font-mono text-[var(--accent)] px-4 py-2 border-t border-l border-r border-[var(--border-dim)] rounded-t-lg"
+              >
+                ocean_view.java
+              </div>
+            </div>
+            <div
+              class="h-56 bg-[#2a2a2a] flex items-center justify-center border-b border-[var(--border-dim)] relative overflow-hidden group-hover:border-[var(--accent)] transition-colors"
+            >
+              <div
+                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 gap-3"
+              >
+                <a
+                  class="bg-[var(--accent)] text-black font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] shadow-[0_0_15px_rgba(204,255,0,0.5)]"
+                  href="#"
+                  >LIVE DEMO</a
+                >
+                <a
+                  class="bg-black/80 text-[var(--accent)] font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)]"
+                  href="https://github.com/kevinThulnith/Reservation-System"
+                  >SOURCE</a
+                >
+              </div>
+              <span class="material-symbols-outlined text-6xl text-gray-600"
+                >hotel</span
+              >
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white">
+                  OceanView Reservation
+                </h3>
+              </div>
+              <p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-3">
+                OceanView Reservation System — backend API with Spring Security,
+                JPA/Hibernate, Thymeleaf views, and JWT authentication. Built
+                with Maven.
+              </p>
+              <div class="mt-auto">
+                <div
+                  class="flex flex-wrap gap-2 text-xs font-mono text-[var(--accent)]"
+                >
+                  <span>Spring Boot</span>
+                  <span>Security</span>
+                  <span>JPA</span>
+                  <span>Thymeleaf</span>
+                  <span>PostgreSQL</span>
+                  <span>JWT</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="text-center mt-8">
+          <a
+            class="inline-flex items-center gap-2 text-[var(--accent)] font-mono hover:underline"
+            href="https://github.com/kevinThulnith"
+          >
+            <span>view_all_repositories()</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+      </section>
+      <section class="reveal">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-[var(--accent)] font-mono text-xl">04.</span>
+          <h2 class="text-3xl font-bold">Mini_Executables</h2>
+          <div class="h-px bg-[var(--border-dim)] flex-grow"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a
+            class="mini-card bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative"
+            href="https://game-cave-mu.vercel.app"
+            target="_blank"
+          >
+            <div
+              class="absolute top-4 right-4 w-2 h-2 rounded-full bg-yellow-400"
+              title="TypeScript/React"
+            ></div>
+            <div class="flex justify-between items-center mb-2">
+              <h3
+                class="font-bold text-white group-hover:text-[var(--accent)] flex items-center gap-2"
+              >
+                Game Cave
+                <span class="live-badge">LIVE</span>
+              </h3>
+              <span class="material-symbols-outlined text-[var(--text-muted)]"
+                >sports_esports</span
+              >
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              12 games in one React/Vite app with TypeScript, SSR, Docker &amp;
+              Nginx. Deployed on Vercel.
+            </p>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >React</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >TypeScript</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >Tailwind</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >Docker</span
+              >
+            </div>
+          </a>
+          <a
+            class="mini-card bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative"
+            href="https://github.com/kevinThulnith/google-authentication"
+          >
+            <div
+              class="absolute top-4 right-4 w-2 h-2 rounded-full bg-blue-500"
+              title="Python/Django"
+            ></div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="font-bold text-white group-hover:text-[var(--accent)]">
+                Google OAuth2
+              </h3>
+              <span class="material-symbols-outlined text-[var(--text-muted)]"
+                >lock</span
+              >
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              Django/React auth template with Google OAuth2, JWT, Framer Motion,
+              django-allauth &amp; dj-rest-auth.
+            </p>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >Django</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >React</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >OAuth2</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >JWT</span
+              >
+            </div>
+          </a>
+          <a
+            class="mini-card bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative"
+            href="https://github.com/kevinThulnith/book-shop"
+          >
+            <div
+              class="absolute top-4 right-4 w-2 h-2 rounded-full bg-orange-600"
+              title="Java"
+            ></div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="font-bold text-white group-hover:text-[var(--accent)]">
+                Book Shop
+              </h3>
+              <span class="material-symbols-outlined text-[var(--text-muted)]"
+                >menu_book</span
+              >
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              Book shop web app with Spring Boot, Spring Security, Thymeleaf
+              views &amp; SQLite/MySQL.
+            </p>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >Spring Boot</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >Security</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >Thymeleaf</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >JPA</span
+              >
+            </div>
+          </a>
+          <a
+            class="mini-card bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative"
+            href="http://galleryCafe.infinityfreeapp.com"
+            target="_blank"
+          >
+            <div
+              class="absolute top-4 right-4 w-2 h-2 rounded-full bg-purple-500"
+              title="PHP"
+            ></div>
+            <div class="flex justify-between items-center mb-2">
+              <h3
+                class="font-bold text-white group-hover:text-[var(--accent)] flex items-center gap-2"
+              >
+                Gallery Caf&eacute;
+                <span class="live-badge">LIVE</span>
+              </h3>
+              <span class="material-symbols-outlined text-[var(--text-muted)]"
+                >restaurant</span
+              >
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              Full restaurant app with ordering, table reservations,
+              admin/employee management &amp; CSRF protection.
+            </p>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >PHP</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >MySQL</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >PHPMailer</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >SSL</span
+              >
+            </div>
+          </a>
+          <a
+            class="mini-card bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative"
+            href="https://github.com/kevinThulnith/Laravel-crud-app"
+          >
+            <div
+              class="absolute top-4 right-4 w-2 h-2 rounded-full bg-red-500"
+              title="Laravel"
+            ></div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="font-bold text-white group-hover:text-[var(--accent)]">
+                Laravel CRUD
+              </h3>
+              <span class="material-symbols-outlined text-[var(--text-muted)]"
+                >php</span
+              >
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              CRUD app with Laravel Breeze auth, email verification, AlpineJS
+              &amp; Tailwind CSS.
+            </p>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >Laravel</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >Breeze</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >AlpineJS</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >MySQL</span
+              >
+            </div>
+          </a>
+          <a
+            class="mini-card bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative"
+            href="https://github.com/kevinThulnith/model-based-app"
+          >
+            <div
+              class="absolute top-4 right-4 w-2 h-2 rounded-full bg-blue-400"
+              title="Python"
+            ></div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="font-bold text-white group-hover:text-[var(--accent)]">
+                ML Health App
+              </h3>
+              <span class="material-symbols-outlined text-[var(--text-muted)]"
+                >health_and_safety</span
+              >
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              Health predictions using ML/AI models with explainability
+              (SHAP/LIME).
+            </p>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >Python</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >ML</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >SHAP</span
+              >
+            </div>
+          </a>
+          <a
+            class="mini-card bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative"
+            href="https://github.com/kevinThulnith/django-vite-react-tailwind-project"
+          >
+            <div
+              class="absolute top-4 right-4 w-2 h-2 rounded-full bg-green-500"
+              title="Django/React"
+            ></div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="font-bold text-white group-hover:text-[var(--accent)]">
+                Product Manager
+              </h3>
+              <span class="material-symbols-outlined text-[var(--text-muted)]"
+                >inventory_2</span
+              >
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              Full-stack product management with DRF &amp; React. JWT auth, Vite
+              bundling, Tailwind styling.
+            </p>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >Django</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >React</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >JWT</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >Vite</span
+              >
+            </div>
+          </a>
+          <a
+            class="mini-card bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative"
+            href="https://github.com/kevinThulnith/php-crud-api"
+          >
+            <div
+              class="absolute top-4 right-4 w-2 h-2 rounded-full bg-purple-400"
+              title="PHP"
+            ></div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="font-bold text-white group-hover:text-[var(--accent)]">
+                PHP CRUD API
+              </h3>
+              <span class="material-symbols-outlined text-[var(--text-muted)]"
+                >api</span
+              >
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              RESTful CRUD API starter template built with vanilla PHP &amp;
+              MySQL.
+            </p>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >PHP</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >MySQL</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >REST</span
+              >
+            </div>
+          </a>
+          <a
+            class="mini-card bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative"
+            href="https://github.com/kevinThulnith/Tic-Tack-Toe"
+          >
+            <div
+              class="absolute top-4 right-4 w-2 h-2 rounded-full bg-cyan-400"
+              title="JavaScript"
+            ></div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="font-bold text-white group-hover:text-[var(--accent)]">
+                Tic Tac Toe
+              </h3>
+              <span class="material-symbols-outlined text-[var(--text-muted)]"
+                >grid_3x3</span
+              >
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              Classic Tic Tac Toe with responsive UI and AI opponent.
+            </p>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >HTML</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >CSS</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >JavaScript</span
+              >
+            </div>
+          </a>
+          <a
+            class="mini-card bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative"
+            href="https://github.com/kevinThulnith/Rock-Paper-Scissor"
+          >
+            <div
+              class="absolute top-4 right-4 w-2 h-2 rounded-full bg-amber-400"
+              title="JavaScript"
+            ></div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="font-bold text-white group-hover:text-[var(--accent)]">
+                Rock Paper Scissors
+              </h3>
+              <span class="material-symbols-outlined text-[var(--text-muted)]"
+                >gesture</span
+              >
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              RPS game with visual feedback and score tracking.
+            </p>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >HTML</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >CSS</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >JavaScript</span
+              >
+            </div>
+          </a>
+          <a
+            class="mini-card bg-[var(--bg-card)] border border-[var(--border-dim)] p-4 hover:border-[var(--accent)] transition-colors rounded group block relative"
+            href="https://github.com/kevinThulnith/Calculator"
+          >
+            <div
+              class="absolute top-4 right-4 w-2 h-2 rounded-full bg-teal-400"
+              title="JavaScript"
+            ></div>
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="font-bold text-white group-hover:text-[var(--accent)]">
+                Calculator
+              </h3>
+              <span class="material-symbols-outlined text-[var(--text-muted)]"
+                >calculate</span
+              >
+            </div>
+            <p class="text-xs text-[var(--text-muted)]">
+              Arithmetic calculator with clean UI and keyboard support.
+            </p>
+            <div class="flex flex-wrap gap-1 mt-2">
+              <span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >HTML</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >CSS</span
+              ><span
+                class="text-[0.6rem] font-mono text-[var(--accent)] opacity-60"
+                >JavaScript</span
+              >
+            </div>
+          </a>
+        </div>
+      </section>
+      <section class="reveal">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-[var(--accent)] font-mono text-xl">05.</span>
+          <h2 class="text-3xl font-bold">System_Logs (Experience)</h2>
+          <div class="h-px bg-[var(--border-dim)] flex-grow"></div>
+        </div>
+        <div class="relative pl-10 space-y-8">
+          <div class="timeline-line"></div>
+          <div class="relative">
+            <div
+              class="absolute -left-[27px] w-4 h-4 rounded-full bg-[var(--bg-dark)] border-2 border-[var(--accent)]"
+            ></div>
+            <div
+              class="bg-[var(--bg-card)] p-5 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-all"
+            >
+              <span class="text-[var(--accent)] font-mono text-xs mb-1 block"
+                >2022 - Present</span
+              >
+              <h3 class="text-lg font-bold text-white">IT Undergraduate</h3>
+              <p class="text-sm text-[var(--text-muted)] font-mono">
+                University of Kelaniya
+              </p>
+              <p class="text-sm text-[var(--text-muted)] mt-2">
+                Specializing in Software Engineering and Information Systems.
+              </p>
+            </div>
+          </div>
+          <div class="relative">
+            <div
+              class="absolute -left-[27px] w-4 h-4 rounded-full bg-[var(--bg-dark)] border-2 border-gray-500"
+            ></div>
+            <div
+              class="bg-[var(--bg-card)] p-5 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-all"
+            >
+              <span
+                class="text-[var(--text-muted)] font-mono text-xs mb-1 block"
+                >2023 - Present</span
+              >
+              <h3 class="text-lg font-bold text-white">Freelance Developer</h3>
+              <p class="text-sm text-[var(--text-muted)] font-mono">
+                Self-Employed
+              </p>
+              <p class="text-sm text-[var(--text-muted)] mt-2">
+                Developing custom web solutions using React, Django, and PHP for
+                local businesses.
+              </p>
+            </div>
+          </div>
+          <div class="relative">
+            <div
+              class="absolute -left-[27px] w-4 h-4 rounded-full bg-[var(--bg-dark)] border-2 border-gray-500"
+            ></div>
+            <div
+              class="bg-[var(--bg-card)] p-5 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-all"
+            >
+              <span
+                class="text-[var(--text-muted)] font-mono text-xs mb-1 block"
+                >2021</span
+              >
+              <h3 class="text-lg font-bold text-white">
+                Started Coding Journey
+              </h3>
+              <p class="text-sm text-[var(--text-muted)] font-mono">
+                Hello World
+              </p>
+              <p class="text-sm text-[var(--text-muted)] mt-2">
+                Initialized learning path in Python and Web Technologies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="reveal pb-12" id="contact">
+        <div
+          class="bg-[var(--bg-terminal)] border border-[var(--border-dim)] rounded-lg p-8 md:p-12"
+        >
+          <div class="text-center mb-8">
+            <span
+              class="material-symbols-outlined text-[var(--accent)] text-4xl mb-4"
+              >alternate_email</span
+            >
+            <h2 class="text-3xl font-bold mb-4">Initialize Connection</h2>
+            <p class="text-[var(--text-muted)] max-w-lg mx-auto">
+              Available for freelance web development projects and open-source
+              contributions. Ping me if you want to collaborate on something
+              cool.
+            </p>
+          </div>
+          <div class="max-w-md mx-auto mb-8">
+            <div
+              class="bg-black border border-[var(--border-dim)] p-4 rounded flex items-center shadow-inner"
+            >
+              <span class="text-[var(--accent)] mr-2">➜</span>
+              <input
+                class="bg-transparent border-none text-[var(--text-main)] w-full focus:ring-0 font-mono placeholder-gray-600"
+                placeholder="enter_email_for_newsletter..."
+                type="email"
+              />
+              <button
+                class="text-[var(--accent)] font-bold hover:text-white transition-colors"
+              >
+                ENTER
+              </button>
+            </div>
+          </div>
+          <div
+            class="flex flex-col md:flex-row items-center justify-center gap-4"
+          >
+            <a
+              class="bg-[var(--accent)] text-black font-bold font-mono px-6 py-3 rounded hover:opacity-90 transition-opacity w-full md:w-auto text-center"
+              href="mailto:kevinthulnith@gmail.com"
+            >
+              send_email()
+            </a>
+            <a
+              class="bg-transparent border border-[var(--accent)] text-[var(--accent)] font-bold font-mono px-6 py-3 rounded hover:bg-[var(--accent)] hover:text-black transition-colors w-full md:w-auto text-center"
+              href="https://www.linkedin.com/in/kevinuluwaduge/"
+            >
+              connect_linkedin()
+            </a>
+          </div>
+          <div
+            class="mt-12 pt-8 border-t border-[var(--border-dim)] flex flex-col md:flex-row justify-between items-center text-sm text-[var(--text-muted)]"
+          >
+            <div class="font-mono mb-4 md:mb-0">
+              © 2026 Kevin Thulnith. All systems operational.
+            </div>
+            <div class="flex gap-6">
+              <a
+                class="hover:text-[var(--accent)] transition-colors"
+                href="https://github.com/kevinThulnith"
+                >GitHub</a
+              >
+              <a
+                class="hover:text-[var(--accent)] transition-colors"
+                href="https://www.instagram.com/kevin_thulnith/"
+                >Instagram</a
+              >
+              <a
+                class="hover:text-[var(--accent)] transition-colors"
+                href="https://facebook.com/kevin.uluwaduge"
+                >Facebook</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      (function () {
+        var skills = [
+          // Ring 1 — Core Languages
+          {
+            id: "python",
+            name: "Python",
+            ring: 1,
+            angle: 0,
+            cat: "backend",
+            level: 95,
+            lt: "Expert",
+            yrs: "4+ yrs",
+            desc: "Django, FastAPI, ML pipelines, automation",
+          },
+          {
+            id: "javascript",
+            name: "JavaScript",
+            ring: 1,
+            angle: 1.57,
+            cat: "frontend",
+            level: 90,
+            lt: "Expert",
+            yrs: "3+ yrs",
+            desc: "React, Node.js, ES6+, async patterns",
+          },
+          {
+            id: "typescript",
+            name: "TypeScript",
+            ring: 1,
+            angle: 3.14,
+            cat: "frontend",
+            level: 82,
+            lt: "Advanced",
+            yrs: "2+ yrs",
+            desc: "React + Vite projects, type-safe APIs",
+          },
+          {
+            id: "java",
+            name: "Java",
+            ring: 1,
+            angle: 4.71,
+            cat: "backend",
+            level: 75,
+            lt: "Advanced",
+            yrs: "2+ yrs",
+            desc: "Spring Boot, JPA, REST API design",
+          },
+          // Ring 2 — Frameworks
+          {
+            id: "django",
+            name: "Django",
+            ring: 2,
+            angle: 0.5,
+            cat: "backend",
+            level: 95,
+            lt: "Expert",
+            yrs: "3+ yrs",
+            desc: "DRF, Channels, Celery, WebSockets",
+          },
+          {
+            id: "react",
+            name: "React",
+            ring: 2,
+            angle: 1.55,
+            cat: "frontend",
+            level: 85,
+            lt: "Advanced",
+            yrs: "3+ yrs",
+            desc: "Vite, Hooks, Context API, Redux",
+          },
+          {
+            id: "springboot",
+            name: "Spring Boot",
+            ring: 2,
+            angle: 2.6,
+            cat: "backend",
+            level: 65,
+            lt: "Intermediate",
+            yrs: "1+ yr",
+            desc: "JPA, Thymeleaf, Spring Security",
+          },
+          {
+            id: "fastapi",
+            name: "FastAPI",
+            ring: 2,
+            angle: 3.65,
+            cat: "backend",
+            level: 80,
+            lt: "Advanced",
+            yrs: "2+ yrs",
+            desc: "Async APIs, Pydantic, SQLAlchemy",
+          },
+          {
+            id: "laravel",
+            name: "Laravel",
+            ring: 2,
+            angle: 4.7,
+            cat: "backend",
+            level: 60,
+            lt: "Intermediate",
+            yrs: "1+ yr",
+            desc: "Breeze, Eloquent ORM, Blade templates",
+          },
+          {
+            id: "tailwind",
+            name: "Tailwind CSS",
+            ring: 2,
+            angle: 5.75,
+            cat: "frontend",
+            level: 90,
+            lt: "Expert",
+            yrs: "3+ yrs",
+            desc: "Utility-first CSS, responsive design",
+          },
+          // Ring 3 — Data & Infrastructure
+          {
+            id: "docker",
+            name: "Docker",
+            ring: 3,
+            angle: 0.3,
+            cat: "devops",
+            level: 80,
+            lt: "Advanced",
+            yrs: "2+ yrs",
+            desc: "Compose, multi-stage builds, networking",
+          },
+          {
+            id: "postgresql",
+            name: "PostgreSQL",
+            ring: 3,
+            angle: 1.35,
+            cat: "backend",
+            level: 85,
+            lt: "Advanced",
+            yrs: "3+ yrs",
+            desc: "Query optimization, indexing, migrations",
+          },
+          {
+            id: "mysql",
+            name: "MySQL",
+            ring: 3,
+            angle: 2.4,
+            cat: "backend",
+            level: 75,
+            lt: "Advanced",
+            yrs: "2+ yrs",
+            desc: "Stored procedures, replication, InnoDB",
+          },
+          {
+            id: "redis",
+            name: "Redis",
+            ring: 3,
+            angle: 3.45,
+            cat: "backend",
+            level: 70,
+            lt: "Intermediate",
+            yrs: "1+ yr",
+            desc: "Caching, pub/sub, WebSocket channels",
+          },
+          {
+            id: "nginx",
+            name: "Nginx",
+            ring: 3,
+            angle: 4.5,
+            cat: "devops",
+            level: 75,
+            lt: "Advanced",
+            yrs: "2+ yrs",
+            desc: "Reverse proxy, SSL termination, load balancing",
+          },
+          {
+            id: "aws",
+            name: "AWS",
+            ring: 3,
+            angle: 5.55,
+            cat: "devops",
+            level: 60,
+            lt: "Intermediate",
+            yrs: "1+ yr",
+            desc: "EC2, S3, CloudFront, Route 53",
+          },
+          // Ring 4 — Tools & Platforms
+          {
+            id: "php",
+            name: "PHP",
+            ring: 4,
+            angle: 0.8,
+            cat: "backend",
+            level: 65,
+            lt: "Intermediate",
+            yrs: "1+ yr",
+            desc: "CRUD APIs, session mgmt, MySQL integration",
+          },
+          {
+            id: "github_actions",
+            name: "GitHub Actions",
+            ring: 4,
+            angle: 2.37,
+            cat: "devops",
+            level: 70,
+            lt: "Intermediate",
+            yrs: "2+ yrs",
+            desc: "CI/CD workflows, automated testing",
+          },
+          {
+            id: "vercel",
+            name: "Vercel",
+            ring: 4,
+            angle: 3.94,
+            cat: "devops",
+            level: 75,
+            lt: "Advanced",
+            yrs: "2+ yrs",
+            desc: "Edge deployments, serverless functions",
+          },
+          {
+            id: "nodejs",
+            name: "Node.js",
+            ring: 4,
+            angle: 5.5,
+            cat: "frontend",
+            level: 78,
+            lt: "Advanced",
+            yrs: "2+ yrs",
+            desc: "Express, SSR, npm ecosystem, APIs",
+          },
+        ];
+
+        var isMobile = window.innerWidth <= 768;
+        var isSmall = window.innerWidth <= 480;
+        var ringRadii = isSmall
+          ? { 1: 45, 2: 80, 3: 115, 4: 148 }
+          : isMobile
+            ? { 1: 55, 2: 100, 3: 145, 4: 185 }
+            : { 1: 90, 2: 165, 3: 240, 4: 310 };
+        var orbSpeeds = { 1: 0.0004, 2: 0.00025, 3: 0.00015, 4: 0.0001 };
+        var container = document.getElementById("orbitViz");
+        var detailPanel = document.getElementById("skillDetail");
+        var toggleBtn = document.getElementById("orbitToggle");
+        var resetBtn = document.getElementById("orbitReset");
+        var centerNode = document.getElementById("orbitCenter");
+        var isPaused = false,
+          pausedElapsed = 0,
+          startTime = Date.now();
+        var activeCategory = null,
+          activeSkillId = null;
+        var els = {};
+
+        // Create skill DOM nodes
+        skills.forEach(function (s) {
+          var el = document.createElement("div");
+          el.className = "skill-orb ring-" + s.ring;
+          el.dataset.skill = s.id;
+          el.dataset.category = s.cat;
+          el.dataset.ring = s.ring;
+          el.textContent = s.name;
+          el.addEventListener("click", function (e) {
+            e.stopPropagation();
+            showDetail(s);
+          });
+          container.appendChild(el);
+          els[s.id] = el;
+        });
+
+        // Animation loop
+        function animate() {
+          var elapsed = isPaused ? pausedElapsed : Date.now() - startTime;
+          skills.forEach(function (s) {
+            var a = s.angle + elapsed * orbSpeeds[s.ring];
+            var r = ringRadii[s.ring];
+            var x = Math.cos(a) * r;
+            var y = Math.sin(a) * r;
+            els[s.id].style.transform =
+              "translate(calc(-50% + " +
+              x.toFixed(1) +
+              "px), calc(-50% + " +
+              y.toFixed(1) +
+              "px))";
+          });
+          requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Detail panel
+        function showDetail(s) {
+          document
+            .querySelectorAll(".skill-orb.active-skill")
+            .forEach(function (e) {
+              e.classList.remove("active-skill");
+            });
+          if (activeSkillId === s.id) {
+            hideDetail();
+            return;
+          }
+          activeSkillId = s.id;
+          els[s.id].classList.add("active-skill");
+          document.getElementById("detailName").textContent = s.name;
+          document.getElementById("detailYears").textContent = s.yrs;
+          document.getElementById("detailLevel").textContent = s.lt;
+          document.getElementById("detailPercent").textContent = s.level + "%";
+          document.getElementById("detailDesc").textContent = s.desc;
+          var fill = document.getElementById("detailLevelFill");
+          fill.style.width = "0%";
+          requestAnimationFrame(function () {
+            fill.style.width = s.level + "%";
+          });
+          detailPanel.classList.add("visible");
+        }
+        function hideDetail() {
+          activeSkillId = null;
+          document
+            .querySelectorAll(".skill-orb.active-skill")
+            .forEach(function (e) {
+              e.classList.remove("active-skill");
+            });
+          detailPanel.classList.remove("visible");
+        }
+
+        // Pause / Resume
+        toggleBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          if (isPaused) {
+            startTime = Date.now() - pausedElapsed;
+            isPaused = false;
+          } else {
+            pausedElapsed = Date.now() - startTime;
+            isPaused = true;
+          }
+          toggleBtn.querySelector(".material-symbols-outlined").textContent =
+            isPaused ? "play_arrow" : "pause";
+        });
+
+        // Reset
+        function resetAll() {
+          activeCategory = null;
+          hideDetail();
+          startTime = Date.now();
+          pausedElapsed = 0;
+          if (isPaused) {
+            isPaused = false;
+            toggleBtn.querySelector(".material-symbols-outlined").textContent =
+              "pause";
+          }
+          document.querySelectorAll(".category-card").forEach(function (c) {
+            c.classList.remove("active");
+            c.querySelectorAll(".prof-fill").forEach(function (f) {
+              f.style.width = "0";
+            });
+          });
+          document.querySelectorAll(".skill-orb").forEach(function (e) {
+            e.classList.remove("highlighted", "dimmed");
+          });
+          document.querySelectorAll(".orbit-ring-visual").forEach(function (r) {
+            r.classList.remove("active");
+          });
+        }
+        resetBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          resetAll();
+        });
+        centerNode.addEventListener("click", function (e) {
+          e.stopPropagation();
+          resetAll();
+        });
+
+        // Click outside to close detail
+        container.addEventListener("click", function (e) {
+          if (
+            !e.target.closest(".skill-orb") &&
+            !e.target.closest(".skill-detail-panel") &&
+            !e.target.closest("button") &&
+            !e.target.closest(".orbit-center")
+          ) {
+            hideDetail();
+          }
+        });
+
+        // Category cards
+        document.querySelectorAll(".category-card").forEach(function (card) {
+          card.addEventListener("click", function () {
+            var cat = card.dataset.category;
+            if (activeCategory === cat) {
+              activeCategory = null;
+              card.classList.remove("active");
+              card.querySelectorAll(".prof-fill").forEach(function (f) {
+                f.style.width = "0";
+              });
+              document.querySelectorAll(".skill-orb").forEach(function (e) {
+                e.classList.remove("highlighted", "dimmed");
+              });
+              document
+                .querySelectorAll(".orbit-ring-visual")
+                .forEach(function (r) {
+                  r.classList.remove("active");
+                });
+            } else {
+              activeCategory = cat;
+              document.querySelectorAll(".category-card").forEach(function (c) {
+                c.classList.remove("active");
+                c.querySelectorAll(".prof-fill").forEach(function (f) {
+                  f.style.width = "0";
+                });
+              });
+              card.classList.add("active");
+              var rings = {};
+              document.querySelectorAll(".skill-orb").forEach(function (e) {
+                if (e.dataset.category === cat) {
+                  e.classList.add("highlighted");
+                  e.classList.remove("dimmed");
+                  rings[e.dataset.ring] = true;
+                } else {
+                  e.classList.remove("highlighted");
+                  e.classList.add("dimmed");
+                }
+              });
+              document
+                .querySelectorAll(".orbit-ring-visual")
+                .forEach(function (r) {
+                  if (rings[r.dataset.ring]) r.classList.add("active");
+                  else r.classList.remove("active");
+                });
+              setTimeout(function () {
+                card.querySelectorAll(".prof-fill").forEach(function (f) {
+                  f.style.width = f.dataset.width + "%";
+                });
+              }, 100);
+            }
+            hideDetail();
+          });
+        });
+      })();
+
+      // === Scroll Reveal Observer ===
+      (function () {
+        var revealEls = document.querySelectorAll(".reveal");
+        if (!revealEls.length) return;
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+        );
+        revealEls.forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+
+      // === Stat counter animation ===
+      (function () {
+        var statEls = document.querySelectorAll(".stat-number");
+        if (!statEls.length) return;
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                var el = entry.target;
+                var target = parseInt(el.dataset.target, 10);
+                var suffix = el.dataset.suffix || "";
+                var duration = 1500;
+                var start = 0;
+                var startTime = null;
+                function step(ts) {
+                  if (!startTime) startTime = ts;
+                  var progress = Math.min((ts - startTime) / duration, 1);
+                  var eased = 1 - Math.pow(1 - progress, 3);
+                  el.textContent = Math.floor(eased * target) + suffix;
+                  if (progress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+                observer.unobserve(el);
+              }
+            });
+          },
+          { threshold: 0.5 },
+        );
+        statEls.forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+
+      // === Burger menu toggle ===
+      (function () {
+        var btn = document.getElementById("burgerBtn");
+        var menu = document.getElementById("mobileMenu");
+        if (!btn || !menu) return;
+        btn.addEventListener("click", function () {
+          btn.classList.toggle("active");
+          menu.classList.toggle("open");
+          document.body.style.overflow = menu.classList.contains("open")
+            ? "hidden"
+            : "";
+        });
+        menu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            btn.classList.remove("active");
+            menu.classList.remove("open");
+            document.body.style.overflow = "";
+          });
+        });
+      })();
+
+      // === Resize orbit radii ===
+      window.addEventListener("resize", function () {
+        // Reload to recalculate orbit radii for new screen size
+        clearTimeout(window._resizeTimer);
+        window._resizeTimer = setTimeout(function () {
+          location.reload();
+        }, 300);
+      });
+    </script>
+  </body>
+</html>
