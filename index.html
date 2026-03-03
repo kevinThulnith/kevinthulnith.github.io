@@ -9,6 +9,12 @@
       content="Portfolio of Kevin Thulnith, a Full Stack Developer and IT Undergraduate from Sri Lanka specializing in Python, Django, React, Laravel, Docker, and DevOps."
     />
 
+    <!-- SEO Optimization -->
+    <meta
+      name="description"
+      content="Portfolio of Kevin Thulnith, a Full Stack Developer and IT Undergraduate from Sri Lanka specializing in Python, Django, React, Laravel, Docker, and DevOps."
+    />
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -16,7 +22,13 @@
         "name": "Kevin Thulnith",
         "url": "https://kevinthulnith.github.io",
         "email": "kevinthulnith@gmail.com",
-        "jobTitle": "Full Stack Developer",
+        "jobTitle": [
+          "Full Stack Developer",
+          "Software Engineer",
+          "IT Undergraduate",
+          "Backend Developer",
+          "Frontend Developer"
+        ],
         "alumniOf": {
           "@type": "CollegeOrUniversity",
           "name": "University of Kelaniya"
@@ -52,6 +64,8 @@
         ]
       }
     </script>
+
+    <!-- Page Styling -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&amp;family=Inter:wght@300;400;600;800&amp;display=swap"
@@ -268,8 +282,8 @@
         z-index: 20;
         background: var(--bg-dark);
         border: 2px solid var(--accent);
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         display: flex;
         flex-direction: column;
@@ -281,7 +295,7 @@
       }
       .orbit-center:hover {
         box-shadow: 0 0 40px rgba(204, 255, 0, 0.4);
-        transform: translate(-50%, -50%) scale(1.08);
+        transform: translate(-50%, -50%) scale(1.05);
       }
       .skill-orb {
         position: absolute;
@@ -753,6 +767,7 @@
     class="antialiased min-h-screen flex flex-col relative overflow-x-hidden"
   >
     <div class="fixed inset-0 pointer-events-none bg-grid opacity-20 z-0"></div>
+    <!-- Navigation Bar -->
     <nav
       class="sticky top-0 z-50 bg-[var(--bg-dark)]/90 backdrop-blur-md border-b border-[var(--border-dim)]"
     >
@@ -771,21 +786,21 @@
           class="nav-links flex items-center gap-6 text-sm font-mono text-[var(--text-muted)]"
         >
           <a class="hover:text-[var(--accent)] transition-colors" href="#about"
-            >_about</a
+            >About</a
           >
           <a
             class="hover:text-[var(--accent)] transition-colors"
             href="#projects"
-            >_projects</a
+            >Projects</a
           >
           <a class="hover:text-[var(--accent)] transition-colors" href="#skills"
-            >_stack</a
+            >Stack</a
           >
           <a
-            class="px-4 py-2 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-colors rounded-sm"
+            class="px-4 py-[7px] border-2 border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-colors rounded-xl"
             href="#contact"
           >
-            contact()
+            Contact()
           </a>
         </div>
         <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
@@ -803,6 +818,7 @@
         >contact()</a
       >
     </div>
+
     <main
       class="flex-grow z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-16 md:space-y-24"
     >
@@ -860,7 +876,10 @@
               </div>
               <div class="pl-6 text-[var(--text-muted)] max-w-2xl">
                 IT Undergraduate at
-                <span class="text-white">University of Kelaniya</span>. <br />
+                <span class="text-white"
+                  >Faculty of Computing and Technology</span
+                >, <span class="text-white">University of Kelaniya</span>.
+                <br />
                 Specializing in scalable web apps with
                 <span class="text-[var(--accent)]">Python/Django</span> &amp;
                 <span class="text-[var(--accent)]">React.js</span>. <br />
@@ -905,50 +924,48 @@
         </div>
         <div class="w-full lg:w-1/3 grid grid-cols-2 gap-4">
           <div
-            class="bg-[var(--bg-card)] p-6 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-colors group"
+            class="bg-[var(--bg-card)] p-6 border-2 border-[var(--border-dim)] hover:border-[var(--accent)] transition-colors group rounded-xl"
           >
             <span
-              class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-110 transition-transform block"
+              class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-125 transition-transform block w-fit"
               >deployed_code</span
             >
-            <h3 class="text-3xl font-bold text-white">15+</h3>
+            <h3 class="text-3xl font-bold text-white">25+</h3>
             <p class="text-sm font-mono text-[var(--text-muted)] mt-1">
               Projects Completed
             </p>
           </div>
           <div
-            class="bg-[var(--bg-card)] p-6 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-colors group"
+            class="bg-[var(--bg-card)] p-6 border-2 border-[var(--border-dim)] rounded-xl hover:border-[var(--accent)] transition-colors group"
           >
             <span
-              class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-110 transition-transform block"
-              >school</span
+              class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-125 transition-transform block w-fit"
+              >code_blocks</span
             >
-            <h3 class="text-3xl font-bold text-white">B.Sc.</h3>
+            <h3 class="text-2xl font-bold text-white">Full Stack</h3>
             <p class="text-sm font-mono text-[var(--text-muted)] mt-1">
-              IT (Reading)
+              Django + React + DevOps
             </p>
           </div>
           <div
-            class="bg-[var(--bg-card)] p-6 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-colors col-span-2 group"
+            class="bg-[var(--bg-card)] p-6 border-2 border-[var(--border-dim)] rounded-xl hover:border-[var(--accent)] transition-colors col-span-2 group"
           >
-            <div class="flex justify-between items-start">
-              <div>
+            <div>
+              <div class="flex justify-between items-center w-full">
                 <span
-                  class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-110 transition-transform block"
-                  >code_blocks</span
+                  class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-125 transition-transform block"
+                  >school</span
                 >
-                <h3 class="text-xl font-bold text-white">Full Stack</h3>
-                <p class="text-sm font-mono text-[var(--text-muted)] mt-1">
-                  Django + React + DevOps
-                </p>
-              </div>
-              <div class="text-right">
                 <div
-                  class="text-[var(--accent)] text-xs font-mono border border-[var(--accent)] px-2 py-1 rounded inline-block"
+                  class="text-[var(--accent)] text-xs font-mono border-2 border-[var(--accent)] px-2 py-1 rounded-xl inline-block"
                 >
                   OPEN FOR HIRE
                 </div>
               </div>
+              <h3 class="text-3xl font-bold text-white">B.Sc</h3>
+              <p class="text-sm font-mono text-[var(--text-muted)] mt-1">
+                Bachelor of Information and Communication Technology (Reading)
+              </p>
             </div>
           </div>
         </div>
@@ -978,7 +995,7 @@
                 class="material-symbols-outlined text-[var(--accent)] text-2xl"
                 >memory</span
               >
-              <span class="text-[9px] font-mono text-[var(--text-muted)] mt-0.5"
+              <span class="text-[9px] font-mono text-[var(--text-muted)] mt-[2px]"
                 >CORE</span
               >
             </div>
@@ -1315,7 +1332,7 @@
       <section class="reveal" id="projects">
         <div class="flex items-center gap-4 mb-8">
           <span class="text-[var(--accent)] font-mono text-xl">03.</span>
-          <h2 class="text-3xl font-bold">Project_Manifest</h2>
+          <h2 class="text-3xl font-bold">Project Manifest</h2>
           <div class="h-px bg-[var(--border-dim)] flex-grow"></div>
         </div>
         <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory">
@@ -1641,7 +1658,7 @@
       <section class="reveal">
         <div class="flex items-center gap-4 mb-8">
           <span class="text-[var(--accent)] font-mono text-xl">04.</span>
-          <h2 class="text-3xl font-bold">Mini_Executables</h2>
+          <h2 class="text-3xl font-bold">Mini Executables</h2>
           <div class="h-px bg-[var(--border-dim)] flex-grow"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
