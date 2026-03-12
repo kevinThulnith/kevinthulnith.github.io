@@ -6,13 +6,41 @@
     <title>Kevin Thulnith | Full Stack Developer</title>
     <meta
       name="description"
-      content="Portfolio of Kevin Thulnith, a Full Stack Developer and IT Undergraduate from Sri Lanka specializing in Python, Django, React, Laravel, Docker, and DevOps."
+      content="Portfolio of Kevin Thulnith, a Full Stack Developer and IT Undergraduate from Sri Lanka specializing in Python, Django, React, Laravel, Docker, and DevOps. Open to remote and onsite roles."
     />
 
-    <!-- SEO Optimization -->
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kevinthulnith.github.io/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kevinthulnith.github.io/" />
     <meta
-      name="description"
-      content="Portfolio of Kevin Thulnith, a Full Stack Developer and IT Undergraduate from Sri Lanka specializing in Python, Django, React, Laravel, Docker, and DevOps."
+      property="og:title"
+      content="Kevin Thulnith | Full Stack Developer (React, Django) | Sri Lanka"
+    />
+    <meta
+      property="og:description"
+      content="Kevin Thulnith - Full Stack Developer from Sri Lanka. It Undergraduate, build scallable web apps and deploy."
+    />
+    <meta
+      property="og:image"
+      content="https://kevinthulnith.github.io/og-image.png"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Kevin Thulnith | Full Stack Developer (React, Django) | Sri Lanka"
+    />
+    <meta
+      name="twitter:description"
+      content="Kevin Thulnith — Full Stack Developer from Sri Lanka. Building scalable web apps with React, Django &amp; DevOps. Available for freelance &amp; remote work."
+    />
+    <meta
+      name="twitter:image"
+      content="https://kevinthulnith.github.io/og-image.png"
     />
 
     <script type="application/ld+json">
@@ -22,6 +50,8 @@
         "name": "Kevin Thulnith",
         "url": "https://kevinthulnith.github.io",
         "email": "kevinthulnith@gmail.com",
+        "image": "https://kevinthulnith.github.io/og-image.png",
+        "description": "Full Stack Developer from Sri Lanka specializing in React, Django, and DevOps. Available for freelance and remote work.",
         "jobTitle": [
           "Full Stack Developer",
           "Software Engineer",
@@ -29,6 +59,14 @@
           "Backend Developer",
           "Frontend Developer"
         ],
+        "homeLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "LK",
+            "addressRegion": "Sri Lanka"
+          }
+        },
         "alumniOf": {
           "@type": "CollegeOrUniversity",
           "name": "University of Kelaniya"
@@ -60,7 +98,10 @@
           "DevOps",
           "PostgreSQL",
           "MySQL",
-          "Redis"
+          "Redis",
+          "Full Stack Web Development",
+          "API Design",
+          "CI/CD"
         ]
       }
     </script>
@@ -790,8 +831,16 @@
           >
           <a
             class="hover:text-[var(--accent)] transition-colors"
+            href="#services"
+            >Services</a
+          >
+          <a
+            class="hover:text-[var(--accent)] transition-colors"
             href="#projects"
             >Projects</a
+          >
+          <a class="hover:text-[var(--accent)] transition-colors" href="#resume"
+            >Resume</a
           >
           <a class="hover:text-[var(--accent)] transition-colors" href="#skills"
             >Stack</a
@@ -809,9 +858,11 @@
       </div>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#about" class="mobile-nav-link">_about</a>
-      <a href="#projects" class="mobile-nav-link">_projects</a>
-      <a href="#skills" class="mobile-nav-link">_stack</a>
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#services" class="mobile-nav-link">Services</a>
+      <a href="#projects" class="mobile-nav-link">Projects</a>
+      <a href="#resume" class="mobile-nav-link">Resume</a>
+      <a href="#skills" class="mobile-nav-link">Stack</a>
       <a
         href="#contact"
         class="px-6 py-3 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-colors rounded-sm text-lg font-mono"
@@ -822,6 +873,7 @@
     <main
       class="flex-grow z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-16 md:space-y-24"
     >
+      <!-- About -->
       <section
         class="flex flex-col lg:flex-row gap-8 md:gap-12 items-center justify-center min-h-[40vh] md:min-h-[60vh]"
         id="about"
@@ -970,6 +1022,91 @@
           </div>
         </div>
       </section>
+
+      <!-- Services Section -->
+      <section class="reveal" id="services" aria-label="Services">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-[var(--accent)] font-mono text-xl">01.</span>
+          <h2 class="text-3xl font-bold">What I Build</h2>
+          <div class="h-px bg-[var(--border-dim)] flex-grow"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div
+            class="bg-[var(--bg-card)] border-2 border-[var(--border-dim)] p-6 rounded-lg hover:border-[var(--accent)] transition-colors group"
+          >
+            <span
+              class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-125 transition-transform block w-fit"
+              >web</span
+            >
+            <h3 class="font-bold text-white mb-2">Full-Stack Web Apps</h3>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+              End-to-end applications with React frontends and Django or FastAPI
+              backends — from concept to production deployment.
+            </p>
+          </div>
+          <div
+            class="bg-[var(--bg-card)] border-2 border-[var(--border-dim)] p-6 rounded-lg hover:border-[var(--accent)] transition-colors group"
+          >
+            <span
+              class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-125 transition-transform block w-fit"
+              >api</span
+            >
+            <h3 class="font-bold text-white mb-2">
+              API Design &amp; Integration
+            </h3>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+              RESTful and async APIs with authentication (JWT/OAuth2),
+              third-party integrations, and clean documentation.
+            </p>
+          </div>
+          <div
+            class="bg-[var(--bg-card)] border-2 border-[var(--border-dim)] p-6 rounded-lg hover:border-[var(--accent)] transition-colors group"
+          >
+            <span
+              class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-125 transition-transform block w-fit"
+              >cloud_sync</span
+            >
+            <h3 class="font-bold text-white mb-2">DevOps &amp; CI/CD</h3>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+              Docker containerization, Nginx reverse proxy, GitHub Actions
+              pipelines, and cloud deployments on Vercel, Railway, and AWS.
+            </p>
+          </div>
+          <div
+            class="bg-[var(--bg-card)] border-2 border-[var(--border-dim)] p-6 rounded-lg hover:border-[var(--accent)] transition-colors group"
+          >
+            <span
+              class="material-symbols-outlined text-[var(--accent)] text-3xl mb-4 group-hover:scale-125 transition-transform block w-fit"
+              >speed</span
+            >
+            <h3 class="font-bold text-white mb-2">Performance &amp; UX</h3>
+            <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+              Optimizing load times, real-time updates via WebSockets, and
+              polished UIs that convert visitors into users.
+            </p>
+          </div>
+        </div>
+        <div
+          class="mt-6 bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-lg p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+        >
+          <div>
+            <p class="text-sm text-white font-semibold">
+              Currently available for freelance &amp; remote work
+            </p>
+            <p class="text-xs text-[var(--text-muted)] mt-1">
+              Open to part-time contracts, project-based work, and full-time
+              opportunities · Remote or Sri Lanka based
+            </p>
+          </div>
+          <a
+            href="#contact"
+            class="shrink-0 px-5 py-2 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-colors rounded font-mono text-sm"
+            >hire_me()</a
+          >
+        </div>
+      </section>
+
+      <!-- Skills -->
       <section class="reveal relative" id="skills">
         <div class="flex items-center gap-4 mb-8">
           <span class="text-[var(--accent)] font-mono text-xl">02.</span>
@@ -995,7 +1132,8 @@
                 class="material-symbols-outlined text-[var(--accent)] text-2xl"
                 >memory</span
               >
-              <span class="text-[9px] font-mono text-[var(--text-muted)] mt-[2px]"
+              <span
+                class="text-[9px] font-mono text-[var(--text-muted)] mt-[2px]"
                 >CORE</span
               >
             </div>
@@ -1329,6 +1467,8 @@
           </div>
         </div>
       </section>
+
+      <!-- Projects -->
       <section class="reveal" id="projects">
         <div class="flex items-center gap-4 mb-8">
           <span class="text-[var(--accent)] font-mono text-xl">03.</span>
@@ -2122,6 +2262,158 @@
           </div>
         </div>
       </section>
+
+      <!-- Resume Section -->
+      <section class="reveal" id="resume" aria-label="Resume">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-[var(--accent)] font-mono text-xl">06.</span>
+          <h2 class="text-3xl font-bold">Resume</h2>
+          <div class="h-px bg-[var(--border-dim)] flex-grow"></div>
+        </div>
+        <div
+          class="bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-lg p-6 md:p-10 space-y-8"
+        >
+          <!-- Skills -->
+          <div>
+            <h3 class="text-lg font-bold text-[var(--accent)] font-mono mb-4">
+              // Skills
+            </h3>
+            <div
+              class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-[var(--text-muted)]"
+            >
+              <div>
+                <p class="text-white font-semibold mb-1">Languages</p>
+                <p>Python, JavaScript, TypeScript, Java, PHP</p>
+              </div>
+              <div>
+                <p class="text-white font-semibold mb-1">Frameworks</p>
+                <p>Django, DRF, FastAPI, React, Spring Boot, Laravel</p>
+              </div>
+              <div>
+                <p class="text-white font-semibold mb-1">DevOps &amp; Cloud</p>
+                <p>Docker, Nginx, GitHub Actions, Vercel, AWS, Railway</p>
+              </div>
+              <div>
+                <p class="text-white font-semibold mb-1">Databases</p>
+                <p>PostgreSQL, MySQL, Redis, SQLite</p>
+              </div>
+              <div>
+                <p class="text-white font-semibold mb-1">Auth &amp; Security</p>
+                <p>JWT, OAuth2, CSRF protection, SSL/HTTPS</p>
+              </div>
+              <div>
+                <p class="text-white font-semibold mb-1">Other</p>
+                <p>WebSockets, REST APIs, Tailwind CSS, Git</p>
+              </div>
+            </div>
+          </div>
+          <!-- Experience -->
+          <div>
+            <h3 class="text-lg font-bold text-[var(--accent)] font-mono mb-4">
+              // Experience
+            </h3>
+            <div class="space-y-4 text-sm">
+              <div
+                class="border-l-2 border-[var(--border-dim)] pl-4 hover:border-[var(--accent)] transition-colors"
+              >
+                <div class="flex justify-between items-start flex-wrap gap-1">
+                  <p class="text-white font-semibold">
+                    Freelance Full Stack Developer
+                  </p>
+                  <span class="text-[var(--accent)] font-mono text-xs"
+                    >2023 – Present</span
+                  >
+                </div>
+                <p class="text-[var(--text-muted)]">Self-Employed · Remote</p>
+                <p class="text-[var(--text-muted)] mt-1">
+                  Delivering custom web solutions with React, Django, and PHP
+                  for local businesses. Full project lifecycle from requirements
+                  to deployment.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Education -->
+          <div>
+            <h3 class="text-lg font-bold text-[var(--accent)] font-mono mb-4">
+              // Education
+            </h3>
+            <div
+              class="border-l-2 border-[var(--border-dim)] pl-4 hover:border-[var(--accent)] transition-colors text-sm"
+            >
+              <div class="flex justify-between items-start flex-wrap gap-1">
+                <p class="text-white font-semibold">
+                  B.Sc. in Information and Communication Technology
+                </p>
+                <span class="text-[var(--accent)] font-mono text-xs"
+                  >2022 – Present</span
+                >
+              </div>
+              <p class="text-[var(--text-muted)]">
+                Faculty of Computing &amp; Technology, University of Kelaniya
+              </p>
+              <p class="text-[var(--text-muted)] mt-1">
+                Specializing in Software Engineering and Information Systems.
+              </p>
+            </div>
+          </div>
+          <!-- Featured Projects -->
+          <div>
+            <h3 class="text-lg font-bold text-[var(--accent)] font-mono mb-4">
+              // Featured Projects
+            </h3>
+            <ul class="space-y-2 text-sm text-[var(--text-muted)] list-none">
+              <li>
+                <span class="text-white font-semibold"
+                  >Factory Management System</span
+                >
+                — Full-stack real-time app with Django Channels, Redis, Docker
+                &amp; OAuth2.
+              </li>
+              <li>
+                <span class="text-white font-semibold"
+                  >Inventory Management System</span
+                >
+                — DRF + React/Vite production app live on Vercel.
+              </li>
+              <li>
+                <span class="text-white font-semibold">DevOps IMS</span> —
+                Containerized pipeline with Docker Compose, Nginx, and CI/CD
+                automation.
+              </li>
+              <li>
+                <span class="text-white font-semibold"
+                  >Multi-Stage React App</span
+                >
+                — Gemini AI integration with TypeScript and multi-stage Docker
+                builds.
+              </li>
+            </ul>
+          </div>
+          <div
+            class="pt-4 border-t border-[var(--border-dim)] flex flex-col sm:flex-row gap-3"
+          >
+            <a
+              href="mailto:kevinthulnith@gmail.com"
+              class="inline-flex items-center gap-2 bg-[var(--accent)] text-black font-bold font-mono px-5 py-2 rounded hover:opacity-90 transition-opacity text-sm"
+            >
+              <span class="material-symbols-outlined text-base">download</span>
+              Request PDF Resume
+            </a>
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 border border-[var(--accent)] text-[var(--accent)] font-mono px-5 py-2 rounded hover:bg-[var(--accent)] hover:text-black transition-colors text-sm"
+            >
+              <span class="material-symbols-outlined text-base"
+                >alternate_email</span
+              >
+              Get In Touch
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
       <section class="reveal pb-12" id="contact">
         <div
           class="bg-[var(--bg-terminal)] border border-[var(--border-dim)] rounded-lg p-8 md:p-12"
