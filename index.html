@@ -2998,11 +2998,13 @@
       })();
 
       // === Resize orbit radii ===
+      window._lastWidth = window.innerWidth;
       window.addEventListener("resize", function () {
-        // Reload to recalculate orbit radii for new screen size
         clearTimeout(window._resizeTimer);
         window._resizeTimer = setTimeout(function () {
-          location.reload();
+          if (window.innerWidth !== window._lastWidth) {
+            location.reload();
+          }
         }, 300);
       });
     </script>
