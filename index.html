@@ -945,7 +945,7 @@
             </div>
             <div class="p-6 flex flex-col flex-grow">
               <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-bold text-white">SEDI Heaith App</h3>
+                <h3 class="text-xl font-bold text-white">SEDI Health App</h3>
               </div>
               <p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-6">
                 I developed comprehensive
@@ -1433,7 +1433,7 @@
       <section class="reveal">
         <div class="flex items-center gap-4 mb-8">
           <span class="text-[var(--accent)] font-mono text-xl">05.</span>
-          <h2 class="text-3xl font-bold">System_Logs (Experience)</h2>
+          <h2 class="text-3xl font-bold">System Logs</h2>
           <div class="h-px bg-[var(--border-dim)] flex-grow"></div>
         </div>
         <div class="relative pl-10 space-y-8">
@@ -1596,8 +1596,12 @@
                 Sakya Higher Education Institute - Matara
               </p>
               <p class="text-[var(--text-muted)] mt-1">
-                Specializing in learning English,Tamil, Japan, ICT. 
-                <a href="https://www.linkedin.com/in/kevinuluwaduge/overlay/Certifications/634900699/treasury/?profileId=ACoAADHoXsMBEDxXEfQ808tMby5295J2JeV-0OU" class="text-slate-200">Certificate</a>
+                Specializing in learning English,Tamil, Japan, ICT.
+                <a
+                  href="https://www.linkedin.com/in/kevinuluwaduge/overlay/Certifications/634900699/treasury/?profileId=ACoAADHoXsMBEDxXEfQ808tMby5295J2JeV-0OU"
+                  class="text-slate-200"
+                  >Certificate</a
+                >
               </p>
             </div>
             <div
@@ -1611,11 +1615,13 @@
                   >2024 – Present</span
                 >
               </div>
-              <p class="text-[var(--text-muted)]">
-                ICBT Southern Campus
-              </p>
+              <p class="text-[var(--text-muted)]">ICBT Southern Campus</p>
               <p class="text-[var(--text-muted)] mt-1">
-                Specializing in learning advance English.(<a href="https://www.linkedin.com/in/kevinuluwaduge/overlay/Certifications/633967817/treasury/?profileId=ACoAADHoXsMBEDxXEfQ808tMby5295J2JeV-0OU" class="text-slate-200">Certificate</a>)
+                Specializing in learning advance English.(<a
+                  href="https://www.linkedin.com/in/kevinuluwaduge/overlay/Certifications/633967817/treasury/?profileId=ACoAADHoXsMBEDxXEfQ808tMby5295J2JeV-0OU"
+                  class="text-slate-200"
+                  >Certificate</a
+                >)
               </p>
             </div>
             <div
@@ -1629,11 +1635,13 @@
                   >2024 – Present</span
                 >
               </div>
-              <p class="text-[var(--text-muted)]">
-                ICBT Southern Campus
-              </p>
+              <p class="text-[var(--text-muted)]">ICBT Southern Campus</p>
               <p class="text-[var(--text-muted)] mt-1">
-                Specializing in Software Engineering and Information Systems.(<a href="https://www.linkedin.com/in/kevinuluwaduge/overlay/Certifications/57924524/treasury/?profileId=ACoAADHoXsMBEDxXEfQ808tMby5295J2JeV-0OU" class="text-slate-200">MERIT Pass</a>)
+                Specializing in Software Engineering and Information Systems.(<a
+                  href="https://www.linkedin.com/in/kevinuluwaduge/overlay/Certifications/57924524/treasury/?profileId=ACoAADHoXsMBEDxXEfQ808tMby5295J2JeV-0OU"
+                  class="text-slate-200"
+                  >MERIT Pass</a
+                >)
               </p>
             </div>
           </div>
@@ -1678,7 +1686,12 @@
               cool.
             </p>
           </div>
-          <div class="max-w-md mx-auto mb-8">
+          <form
+            class="max-w-md mx-auto mb-8"
+            id="contactForm"
+            action="https://formspree.io/f/mwvayakd"
+            method="post"
+          >
             <div
               class="bg-black border border-[var(--border-dim)] p-4 rounded flex items-center shadow-inner"
             >
@@ -1687,14 +1700,31 @@
                 class="bg-transparent border-none text-[var(--text-main)] w-full focus:ring-0 font-mono placeholder-gray-600"
                 placeholder="enter_email_for_newsletter..."
                 type="email"
+                name="email"
               />
               <button
+                type="submit"
                 class="text-[var(--accent)] font-bold hover:text-white transition-colors"
               >
                 ENTER
               </button>
             </div>
-          </div>
+            <input type="text" name="_gotcha" style="display: none" />
+            <p
+              id="formSuccess"
+              class="font-mono text-sm text-center mt-3 hidden"
+              style="color: #22c55e"
+            >
+              ✓ message_sent: connection initialized successfully
+            </p>
+            <p
+              id="formError"
+              class="font-mono text-sm text-center mt-3 hidden"
+              style="color: #ef4444"
+            >
+              ✗ error: transmission failed — try again
+            </p>
+          </form>
           <div
             class="flex flex-col md:flex-row items-center justify-center gap-4"
           >

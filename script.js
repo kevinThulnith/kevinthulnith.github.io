@@ -507,3 +507,34 @@ window.addEventListener("resize", function () {
     }
   }, 300);
 });
+
+// Form functionality
+const contactForm = document.getElementById("contactForm");
+const formSuccess = document.getElementById("formSuccess");
+const formError = document.getElementById("formError");
+
+contactForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const btn = contactForm.querySelector("button[type='submit']");
+  const original = btn.textContent;
+  btn.textContent = "SENDING...";
+  btn.disabled = true;
+
+  const res = await fetch(contactForm.action, {
+    method: "POST",
+    body: new FormData(contactForm),
+    headers: { Accept: "application/json" },
+  });
+
+  if (res.ok) {
+    contactForm.reset();
+    formSuccess.classList.remove("hidden");
+    formError.classList.add("hidden");
+  } else {
+    formError.classList.remove("hidden");
+    formSuccess.classList.add("hidden");
+  }
+
+  btn.textContent = original;
+  btn.disabled = false;
+});
