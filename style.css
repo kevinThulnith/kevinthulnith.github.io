@@ -333,6 +333,28 @@ body {
 .category-card.active .cat-arrow {
   transform: rotate(180deg);
 }
+.skill-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.skill-pill {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  line-height: 1;
+  padding: 6px 10px;
+  border: 2px solid var(--border-dim);
+  border-radius: 9999px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.02);
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+.category-card.active .skill-pill {
+  border-color: rgba(204, 255, 0, 0.55);
+  color: var(--accent);
+}
 .prof-bar {
   height: 3px;
   background: var(--border-dim);
@@ -600,8 +622,9 @@ body {
     font-size: 1rem;
   }
   /* Project cards */
-  .flex.overflow-x-auto article {
-    min-width: 300px !important;
+  #projects .flex.overflow-x-auto article {
+    width: 100% !important;
+    min-width: 100% !important;
   }
   /* Category sidebar */
   .category-skills-list .text-xs {
@@ -650,8 +673,9 @@ body {
     font-size: 1.25rem !important;
   }
   /* Project cards smaller */
-  .flex.overflow-x-auto article {
-    min-width: 260px !important;
+  #projects .flex.overflow-x-auto article {
+    width: 100% !important;
+    min-width: 100% !important;
   }
   /* Stats */
   .stat-number {
