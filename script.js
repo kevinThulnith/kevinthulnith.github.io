@@ -278,17 +278,31 @@
       ? { 1: 55, 2: 100, 3: 145, 4: 185 }
       : { 1: 90, 2: 165, 3: 240, 4: 310 };
   var orbSpeeds = { 1: 0.0004, 2: 0.00025, 3: 0.00015, 4: 0.0001 };
+  window._setOrbitRadii = function (radii) {
+    ringRadii = radii;
+  };
   var container = document.getElementById("orbitViz");
   var detailPanel = document.getElementById("skillDetail");
   var toggleBtn = document.getElementById("orbitToggle");
   var resetBtn = document.getElementById("orbitReset");
   var centerNode = document.getElementById("orbitCenter");
-  var isPaused = false,
+  centerNode.setAttribute("role", "button");
+  centerNode.setAttribute("tabindex", "0");
+  centerNode.setAttribute("aria-label", "Reset skill visualization filters");
+  var prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  var isPaused = prefersReducedMotion,
     pausedElapsed = 0,
     startTime = Date.now();
   var activeCategory = null,
     activeSkillId = null;
   var els = {};
+
+  if (prefersReducedMotion && toggleBtn) {
+    toggleBtn.querySelector(".material-symbols-outlined").textContent =
+      "play_arrow";
+  }
 
   // Create skill DOM nodes
   skills.forEach(function (s) {
@@ -298,9 +312,19 @@
     el.dataset.category = s.cat;
     el.dataset.ring = s.ring;
     el.textContent = s.name;
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    el.setAttribute("aria-label", s.name + " skill details");
     el.addEventListener("click", function (e) {
       e.stopPropagation();
       showDetail(s);
+    });
+    el.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        e.stopPropagation();
+        showDetail(s);
+      }
     });
     container.appendChild(el);
     els[s.id] = el;
@@ -377,7 +401,7 @@
     hideDetail();
     startTime = Date.now();
     pausedElapsed = 0;
-    if (isPaused) {
+    if (isPaused && !prefersReducedMotion) {
       isPaused = false;
       toggleBtn.querySelector(".material-symbols-outlined").textContent =
         "pause";
@@ -403,6 +427,13 @@
     e.stopPropagation();
     resetAll();
   });
+  centerNode.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      e.stopPropagation();
+      resetAll();
+    }
+  });
 
   // Click outside to close detail
   container.addEventListener("click", function (e) {
@@ -418,6 +449,14 @@
 
   // Category cards
   document.querySelectorAll(".category-card").forEach(function (card) {
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        card.click();
+      }
+    });
     card.addEventListener("click", function () {
       var cat = card.dataset.category;
       if (activeCategory === cat) {
@@ -541,13 +580,22 @@
   });
 })();
 
-// === Resize orbit radii ===
+// === Resize orbit radii (recompute in place, no page reload) ===
 window._lastWidth = window.innerWidth;
 window.addEventListener("resize", function () {
   clearTimeout(window._resizeTimer);
   window._resizeTimer = setTimeout(function () {
-    if (window.innerWidth !== window._lastWidth) {
-      location.reload();
+    if (window.innerWidth === window._lastWidth) return;
+    window._lastWidth = window.innerWidth;
+    var isMobileNow = window.innerWidth <= 768;
+    var isSmallNow = window.innerWidth <= 480;
+    window._ringRadii = isSmallNow
+      ? { 1: 45, 2: 80, 3: 115, 4: 148 }
+      : isMobileNow
+        ? { 1: 55, 2: 100, 3: 145, 4: 185 }
+        : { 1: 90, 2: 165, 3: 240, 4: 310 };
+    if (typeof window._setOrbitRadii === "function") {
+      window._setOrbitRadii(window._ringRadii);
     }
   }, 300);
 });
