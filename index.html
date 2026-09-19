@@ -632,6 +632,9 @@
                   <span class="skill-pill">Docker</span>
                   <span class="skill-pill">Nginx</span>
                   <span class="skill-pill">GitHub Actions</span>
+                  <span class="skill-pill">GitLab</span>
+                  <span class="skill-pill">Kubernetes</span>
+                  <span class="skill-pill">Grafana</span>
                   <span class="skill-pill">Vercel</span>
                   <span class="skill-pill">AWS</span>
                 </div>
@@ -674,7 +677,81 @@
           <h2 class="text-3xl font-bold">Project Manifest</h2>
           <div class="h-px bg-[var(--border-dim)] flex-grow"></div>
         </div>
+
+        <!-- Devops project -->
         <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory">
+          <article
+            class="min-w-[280px] sm:min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group"
+          >
+            <div class="absolute -top-8 left-0 flex">
+              <div
+                class="bg-[var(--bg-card)] text-xs font-mono text-[var(--accent)] px-4 py-2 border-t border-l border-r border-[var(--border-dim)] rounded-t-lg"
+              >
+                factory_sys.py
+              </div>
+            </div>
+            <div
+              class="h-56 bg-[#2a2a2a] flex items-center justify-center border-b border-[var(--border-dim)] relative overflow-hidden group-hover:border-[var(--accent)] transition-colors"
+            >
+              <img
+                alt="Factory Management System Dashboard"
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-40 transition-opacity"
+                src="media/devops.jpg"
+              />
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 gap-3"
+              >
+                <a
+                  class="bg-black/80 text-[var(--accent)] font-bold py-2 px-5 rounded-sm text-sm border border-[var(--accent)] hover:bg-black transition-colors"
+                  href="https://github.com/kevinThulnith/DevOps"
+                >
+                  SOURCE
+                </a>
+              </div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white">DevOps Project</h3>
+                <div class="flex gap-2 text-[var(--text-muted)]">
+                  <span class="material-symbols-outlined text-lg" title="Docker"
+                    >dock</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-lg"
+                    title="Database"
+                    >database</span
+                  >
+                </div>
+              </div>
+              <p
+                class="text-sm text-[var(--text-muted)] mb-4 line-clamp-7 text-justify"
+              >
+                I developed a complete
+                <span class="text-slate-300">DevOps Project</span>.
+                Containerized the whole system with Docker Compose. Added system
+                <span class="text-slate-300">metricks dashboars</span> developed
+                using Grafana. Developed 𝗖𝗜/𝗖𝗗 𝗽𝗶𝗽𝗲𝗹𝗶𝗻𝗲𝘀 using 𝗝𝗲𝗻𝗸𝗶𝗻𝘀, 𝗚𝗶𝘁𝗛𝘂𝗯
+                𝗔𝗰𝘁𝗶𝗼𝗻𝘀, and 𝗚𝗶𝘁𝗟𝗮𝗯. Separate Kubernates with
+                <span class="text-slate-300"> HPA</span> plus SSL and custom
+                Ingress.
+              </p>
+              <div class="mt-auto">
+                <div
+                  class="flex flex-wrap gap-2 text-xs font-mono text-[var(--accent)]"
+                >
+                  <span>DockerCompose</span>
+                  <span>Kubernetes</span>
+                  <span>Grafana</span>
+                  <span>Promtail</span>
+                  <span>Gitlab</span>
+                  <span>Jenkins</span>
+                  <span>GithubActions</span>
+                  <span>Ci-Cd</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
           <!-- FMS -->
           <article
             class="min-w-[280px] sm:min-w-[350px] md:min-w-[450px] bg-[var(--bg-card)] border border-[var(--border-dim)] rounded-b-lg relative snap-center flex flex-col h-full group"
@@ -1310,6 +1387,31 @@
             >
               <span
                 class="text-[var(--text-muted)] font-mono text-xs mb-1 block"
+                >2026 - Present</span
+              >
+              <h3 class="text-lg font-bold text-white">Completed My BSc</h3>
+              <p class="text-sm text-[var(--text-muted)] font-mono">
+                Cardiff Metropolitan University
+              </p>
+              <p class="text-sm text-[var(--text-muted)] mt-2">
+                I completed my Bachelors of Science with
+                <span class="text-slate-300"
+                  >Honours in Software Engineering</span
+                >
+                with
+                <span class="text-slate-300">Second Class, Division One</span>.
+              </p>
+            </div>
+          </div>
+          <div class="relative">
+            <div
+              class="absolute -left-[27px] w-4 h-4 rounded-full bg-[var(--bg-dark)] border-2 border-gray-500"
+            ></div>
+            <div
+              class="bg-[var(--bg-card)] p-5 border border-[var(--border-dim)] rounded hover:border-[var(--accent)] transition-all"
+            >
+              <span
+                class="text-[var(--text-muted)] font-mono text-xs mb-1 block"
                 >2024 - Present</span
               >
               <h3 class="text-lg font-bold text-white">Completed My Diploma</h3>
@@ -1318,8 +1420,10 @@
               </p>
               <p class="text-sm text-[var(--text-muted)] mt-2">
                 I completed my Higher Diploma in
-                <span class="text-slate-300"></span>Computing and Software
-                Engineering with a MERIT pass.
+                <span class="text-slate-300">
+                  Computing and Software Engineering</span
+                >
+                with a <span class="text-slate-300">MERIT</span> pass.
               </p>
             </div>
           </div>
@@ -1490,6 +1594,28 @@
                   href="https://www.linkedin.com/in/kevinuluwaduge/overlay/Certifications/57924524/treasury/?profileId=ACoAADHoXsMBEDxXEfQ808tMby5295J2JeV-0OU"
                   class="text-slate-200"
                   >MERIT Pass</a
+                >)
+              </p>
+            </div>
+            <div
+              class="border-l-2 border-[var(--border-dim)] mb-4 pl-4 hover:border-[var(--accent)] transition-colors text-sm"
+            >
+              <div class="flex justify-between items-start flex-wrap gap-1">
+                <p class="text-white font-semibold">
+                  BSc with Honours in Software Engineering
+                </p>
+                <span class="text-[var(--accent)] font-mono text-xs"
+                  >2026 – Present</span
+                >
+              </div>
+              <p class="text-[var(--text-muted)]">
+                Cardiff Metropolitan University
+              </p>
+              <p class="text-[var(--text-muted)] mt-1">
+                Bachelor of Science with Honours in Software Engineering .(<a
+                  href="https://www.linkedin.com/in/kevinuluwaduge/overlay/Education/1258983171/treasury/?profileId=ACoAADHoXsMBEDxXEfQ808tMby5295J2JeV-0OU"
+                  class="text-slate-200"
+                  >Second Class, Division One</a
                 >)
               </p>
             </div>
