@@ -257,6 +257,17 @@
       yrs: "2+ yrs",
       desc: "Express, SSR, npm ecosystem, APIs",
     },
+    {
+      id: "machine_learning_python",
+      name: "Machine Learning",
+      ring: 4,
+      angle: 0.25,
+      cat: "ai",
+      level: 78,
+      lt: "Advanced",
+      yrs: "3+ yrs",
+      desc: "ML pipelines, model training, data analysis",
+    },
   ];
 
   var isMobile = window.innerWidth <= 768;
